@@ -2,6 +2,10 @@ package com.parking.serialization;
 
 import java.util.Date;
 
+import javax.jdo.annotations.PersistenceCapable;
+
+
+@PersistenceCapable(detachable="true")
 public class Usuario {
 	private String dni;
 	private String nombre;

@@ -1,7 +1,12 @@
 package com.parking.serialization;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+@PersistenceCapable(detachable="true")
 public class Coche {
 	private String matricula;
+	@Persistent(defaultFetchGroup="true")
 	private Usuario propietario;
 	
 	public String getMatricula() {
