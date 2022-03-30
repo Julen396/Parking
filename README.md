@@ -4,3 +4,7 @@ Aplicación para la gestión de un parking, formada por varios gestores y un adm
 Para ejecutar la aplicación:
 
 mvn clean javafx:run OR mvn javafx:run
+
+Para probar el servidor
+
+mvn jetty:run
