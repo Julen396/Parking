@@ -2,6 +2,7 @@ package com.parking.client;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -31,7 +32,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            Scene scene = new Scene(loader.load(getClass().getResource("mainWindow.fxml")));
+            Scene scene = new Scene((Parent) loader.load(getClass().getResource("mainWindow.fxml")));
 
             // Show the scene containing the root layout.
             primaryStage.setScene(scene);
