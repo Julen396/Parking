@@ -1,11 +1,17 @@
 package com.parking.serialization;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
+import javax.jdo.annotations.Join;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+@PersistenceCapable(detachable="true")
 public class Parking {
 
 	private int numPlazas;
+	@Join
+	@Persistent(dependentElement="true", defaultFetchGroup="true")
 	private ArrayList<Plaza> plazas;
 	
 	public Parking(int numPlazas) {

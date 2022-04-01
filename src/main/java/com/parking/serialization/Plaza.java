@@ -1,35 +1,59 @@
 package com.parking.serialization;
 
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+@PersistenceCapable(detachable="true")
 public class Plaza {
     private int piso;
     private String zona;
     private int posicion;
-
+    @Persistent(defaultFetchGroup="true")
     private Coche coche;
-
+    
     /**
-     * @return devuelve el piso
+     * @return numero del piso
      */
-    private int getPiso() { return piso;}
-
-    /**
-    * @return devuelve la zona (A, B, C...)
-     */
-    private String getZona() { return zona;}
-
-    /**
-     * @return la posición exacta de la plaza, dentro de la zona y el piso
-     */
-    private int getPosicion() { return posicion;}
-
-    /**
-     * @return el coche que tiene reservada la plaza
-     */
-    protected Coche getCoche() { return coche;}
-
-    /**
-     *
-     * @param coche el nuevo coche que tiene reservada la plaza
-     */
-    private void setCoche(Coche coche) { this.coche = coche;}
+    public int getPiso() {
+		return piso;
+	}
+    
+	public void setPiso(int piso) {
+		this.piso = piso;
+	}
+	
+	/**
+	 * @return nombre de la zona (A, B, C, ...)
+	 */
+	public String getZona() {
+		return zona;
+	}
+	
+	public void setZona(String zona) {
+		this.zona = zona;
+	}
+	
+	/**
+	 * @return numero de la posicion dentro del piso y la zona correspondientes
+	 */
+	public int getPosicion() {
+		return posicion;
+	}
+	
+	public void setPosicion(int posicion) {
+		this.posicion = posicion;
+	}
+	
+	/**
+	 * @return coche estacionada dentro de la plaza
+	 * @return NULL cuando no hay ningun coche estacionado en esa plaza
+	 */
+	public Coche getCoche() {
+		return coche;
+	}
+	
+	public void setCoche(Coche coche) {
+		this.coche = coche;
+	}
 }
+

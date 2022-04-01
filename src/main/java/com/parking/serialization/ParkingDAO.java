@@ -8,44 +8,44 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-public class PlazaDAO extends DataAccessObjectBase implements IDataAccessObject<Plaza> {
+public class ParkingDAO extends DataAccessObjectBase implements IDataAccessObject<Parking> {
 
-	private static PlazaDAO instance;	
+	private static ParkingDAO instance;	
 	
-	private PlazaDAO() { }
+	private ParkingDAO() { }
 	
-	public static PlazaDAO getInstance() {
+	public static ParkingDAO getInstance() {
 		if (instance == null) {
-			instance = new PlazaDAO();
+			instance = new ParkingDAO();
 		}		
 		
 		return instance;
 	}	
 	
 	@Override
-	public void save(Plaza object) {
+	public void save(Parking object) {
 		super.saveObject(object);
 	}
 
 	@Override
-	public void delete(Plaza object) {
+	public void delete(Parking object) {
 		super.deleteObject(object);
 	}
 
 	@Override
-	public List<Plaza> getAll() {
+	public List<Parking> getAll() {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		
-		List<Plaza> plazas = new ArrayList<>();
+		List<Parking> parkings = new ArrayList<>();
 
 		try {
 			tx.begin();
 			
-			Extent<Plaza> retExtent = pm.getExtent(Plaza.class, true);
+			Extent<Parking> retExtent = pm.getExtent(Parking.class, true);
 			
-			for (Plaza p : retExtent) {
-				plazas.add(p);
+			for (Parking p : retExtent) {
+				parkings.add(p);
 			}
 						
 			tx.commit();
@@ -59,22 +59,22 @@ public class PlazaDAO extends DataAccessObjectBase implements IDataAccessObject<
 			pm.close();
 		}
 
-		return plazas;
+		return parkings;
 	}
 
 	@Override
-	public Plaza find(String param) {		
+	public Parking find(String param) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 
-		Plaza result = null; 
+		Parking result = null; 
 
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Plaza.class.getName() + " WHERE nombre == '" + param + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Parking.class.getName() + " WHERE nombre == '" + param + "'");
 			query.setUnique(true);
-			result = (Plaza) query.execute();
+			result = (Parking) query.execute();
 			
 			tx.commit();
 		} catch (Exception ex) {

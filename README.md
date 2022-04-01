@@ -8,3 +8,8 @@ mvn clean javafx:run OR mvn javafx:run
 Para probar el servidor
 
 mvn exec:java
+
+Para hacer la creación/eliminación del esquema de Base de Datos
+
+mvn clean compile
+mvn datanucleus:schema-create/mvn datanucleus:schema-delete
