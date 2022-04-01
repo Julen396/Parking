@@ -20,7 +20,7 @@ public class Plaza {
     /**
      * @return la posición exacta de la plaza, dentro de la zona y el piso
      */
-    private int getPosicion() { return piso;}
+    private int getPosicion() { return posicion;}
 
     /**
      * @return el coche que tiene reservada la plaza
