@@ -7,4 +7,4 @@ mvn clean javafx:run OR mvn javafx:run
 
 Para probar el servidor
 
-mvn jetty:run
+mvn exec:java
