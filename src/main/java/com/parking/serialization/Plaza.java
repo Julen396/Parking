@@ -25,7 +25,7 @@ public class Plaza {
     /**
      * @return el coche que tiene reservada la plaza
      */
-    private Coche getCoche() { return coche;}
+    protected Coche getCoche() { return coche;}
 
     /**
      *
