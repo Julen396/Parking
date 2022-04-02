@@ -4,16 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.client.MainAppController">
    <children>
-      <VBox alignment="CENTER" layoutX="31.0" layoutY="28.0" prefHeight="340.0" prefWidth="519.0" spacing="21.0">
-         <children>
-            <Label fx:id="welcomeText" text="Introducir matricula" />
-            <TextField fx:id="matricula" prefHeight="22.0" prefWidth="434.0" />
-            <Button mnemonicParsing="false" onAction="#onHelloButtonClick" text="Anadir matricula" />
-         </children>
-      </VBox>
+      <TextField fx:id="matricula" layoutX="34.0" layoutY="126.0" prefHeight="25.0" prefWidth="165.0" />
+      <Label fx:id="welcomeText" layoutX="65.0" layoutY="76.0" text="Introducir matricula" />
+      <Button layoutX="65.0" layoutY="298.0" mnemonicParsing="false" onAction="#onMatriculaButtonClick" text="Anadir matricula" />
+      <TextField fx:id="propietario" layoutX="372.0" layoutY="126.0" prefHeight="25.0" prefWidth="165.0" />
+      <Button layoutX="403.0" layoutY="298.0" mnemonicParsing="false" onAction="#onPropietarioButtonClick" text="Anadir matricula" />
+      <Label fx:id="welcomeText1" layoutX="375.0" layoutY="76.0" text="Introducir nombre propietario" />
    </children>
 </AnchorPane>

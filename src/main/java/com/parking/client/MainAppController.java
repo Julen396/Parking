@@ -8,12 +8,18 @@ import javafx.scene.control.TextField;
 public class MainAppController {
     @FXML
     private Label welcomeText;
-    
+    @FXML
+    private Label welcomeText1;
     @FXML
     private TextField matricula;
-    
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Matricula Anadida!");
+    private TextField propietario;
+    @FXML
+    protected void onMatriculaButtonClick() {
+        welcomeText.setText("Matricula Anyadida!");
+    }
+    @FXML
+    protected void onPropietarioButtonClick() {
+        welcomeText1.setText("Propietario Anyadido!");
     }
 }
