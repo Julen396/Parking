@@ -7,11 +7,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.client.MainAppController">
    <children>
-      <TextField fx:id="matricula" layoutX="34.0" layoutY="126.0" prefHeight="25.0" prefWidth="165.0" />
-      <Label fx:id="welcomeText" layoutX="65.0" layoutY="76.0" text="Introducir matricula" />
-      <Button layoutX="65.0" layoutY="298.0" mnemonicParsing="false" onAction="#onMatriculaButtonClick" text="Anadir matricula" />
-      <TextField fx:id="propietario" layoutX="372.0" layoutY="126.0" prefHeight="25.0" prefWidth="165.0" />
-      <Button layoutX="403.0" layoutY="298.0" mnemonicParsing="false" onAction="#onPropietarioButtonClick" text="Anadir matricula" />
-      <Label fx:id="welcomeText1" layoutX="375.0" layoutY="76.0" text="Introducir nombre propietario" />
+      <TextField fx:id="piso" layoutX="53.0" layoutY="126.0" prefHeight="25.0" prefWidth="106.0" />
+      <Label fx:id="pisoText" layoutX="65.0" layoutY="76.0" text="Introducir piso " />
+      <TextField fx:id="nombreZona" layoutX="211.0" layoutY="126.0" prefHeight="25.0" prefWidth="165.0" />
+      <Button fx:id="botonAnyadir" layoutX="249.0" layoutY="302.0" mnemonicParsing="false" onAction="#onPropietarioButtonClick" text="Anyadir plaza" />
+      <Label fx:id="nombreZonaText" layoutX="214.0" layoutY="76.0" text="Introducir nombre de la zona" />
+      <TextField fx:id="posicion" layoutX="429.0" layoutY="126.0" prefHeight="25.0" prefWidth="106.0" />
+      <Label fx:id="posicionText" layoutX="432.0" layoutY="76.0" text="Introducir posicion" />
+      <Label fx:id="cocheText" layoutX="253.0" layoutY="192.0" text="Introducir coche" />
+      <TextField fx:id="coche" layoutX="247.0" layoutY="226.0" prefHeight="25.0" prefWidth="106.0" />
    </children>
 </AnchorPane>
