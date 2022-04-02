@@ -42,4 +42,9 @@ public class PlazaController {
     	posicionText.setText("posicion anyadida!");
     }
 
+    @FXML
+    void onHomeButtonClick() {
+        MainApp.initRootLayout(getClass().getResource("mainWindow.fxml"));
+    }
+
 }

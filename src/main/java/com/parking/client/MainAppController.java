@@ -7,19 +7,31 @@ import javafx.scene.control.TextField;
 
 public class MainAppController {
     @FXML
-    private Label welcomeText;
+    private Label matriculaLabel;
     @FXML
-    private Label welcomeText1;
+    private Label usuarioLabel;
     @FXML
-    private TextField matricula;
+    private TextField matriculaTF;
     @FXML
-    private TextField propietario;
+    private TextField propietarioTF;
+
     @FXML
-    protected void onMatriculaButtonClick() {
-        welcomeText.setText("Matricula Anyadida!");
+    protected void onUsuarioButtonClick() {
+        MainApp.initRootLayout(getClass().getResource("usuarioWindow.fxml"));
     }
     @FXML
+    protected void onPlazaButtonClick() {
+        MainApp.initRootLayout(getClass().getResource("plazaWindow.fxml"));
+    }
+
+    @FXML
     protected void onPropietarioButtonClick() {
-        welcomeText1.setText("Propietario Anyadido!");
+        usuarioLabel.setText("Propietario Anñadido!");
+        //TODO Guardar propietario
+    }
+    @FXML
+    protected void onMatriculaButtonClick() {
+        matriculaLabel.setText("Matrícula Añadida!");
+        //TODO Guardar matrícula
     }
 }

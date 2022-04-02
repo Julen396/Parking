@@ -39,4 +39,9 @@ public class UsuarioController {
     	nombreText.setText("Anyadido nombre!");
     }
 
+    @FXML
+    void onHomeButtonClick() {
+        MainApp.initRootLayout(getClass().getResource("mainWindow.fxml"));
+    }
+
 }
