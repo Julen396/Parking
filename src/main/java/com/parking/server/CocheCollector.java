@@ -3,18 +3,20 @@ package com.parking.server;
 import java.util.ArrayList;
 
 import com.parking.serialization.Coche;
+import com.parking.serialization.CocheDAO;
 
 public class CocheCollector {
     ArrayList<Coche> coches = new ArrayList<Coche>();
     
     public ArrayList<Coche> addCoche(Coche coche) {
         synchronized(this) {
-        	coches.add(coche);
-            return coches;
+        	//coches.add(coche);
+        	CocheDAO.getInstance().save(coche);
+            return (ArrayList<Coche>) CocheDAO.getInstance().getAll();
         }
     }
 
     public ArrayList<Coche> getCoches() {
-        return coches;
+        return (ArrayList<Coche>) CocheDAO.getInstance().getAll();
     }
 }
