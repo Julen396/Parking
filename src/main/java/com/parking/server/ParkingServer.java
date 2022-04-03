@@ -35,10 +35,6 @@ public class ParkingServer{
 		cocheCollector = new CocheCollector();
 		plazaCollector = new PlazaCollector();
 		
-		Plaza p1 = new Plaza();
-		p1.setPiso(1);
-		anadirPlaza(p1);
-		
 		/*Usuario u1 = new Usuario();
 		u1.setDni("7777777K");
 		Coche coche1 = new Coche();

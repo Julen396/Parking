@@ -1,5 +1,6 @@
 package com.parking.client;
 
+import com.parking.server.ParkingServer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +13,7 @@ import java.net.URL;
 public class MainApp extends Application {
 
     public static Stage primaryStage;
+    public static ParkingServer server;
 
     public static void main(String[] args) {
         launch(args);
@@ -19,6 +21,8 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        server = new ParkingServer();
+
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("AddressApp");
 

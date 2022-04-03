@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,18 +17,17 @@
                      <children>
                         <Label fx:id="matriculaLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="127.0" text="Introducir Matrícula" />
                         <TextField fx:id="matriculaTF" />
-                        <Button mnemonicParsing="false" onAction="#onMatriculaButtonClick" text="Anadir matrícula" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="226.0" prefWidth="162.0" spacing="50.0">
                      <children>
                         <Label fx:id="usuarioLabel" alignment="CENTER" text="Introducir nombre propietario" />
                         <TextField fx:id="propietarioTF" />
-                        <Button mnemonicParsing="false" onAction="#onPropietarioButtonClick" text="Anadir nombre" />
                      </children>
                   </VBox>
                </children>
             </HBox>
+            <Button mnemonicParsing="false" onAction="#onCrearButtonClick" text="Crear" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="45.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#onPlazaButtonClick" text="Plaza" />

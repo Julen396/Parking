@@ -10,7 +10,13 @@ public class Usuario {
 	private String dni;
 	private String nombre;
 	private Date fecha_nac;
-	
+
+	public Usuario(String dni, String nombre, Date fecha_nac) {
+		this.dni = dni;
+		this.nombre = nombre;
+		this.fecha_nac = fecha_nac;
+	}
+
 	public String getDni() {
 		return dni;
 	}

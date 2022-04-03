@@ -8,6 +8,11 @@ public class Coche {
 	private String matricula;
 	@Persistent(defaultFetchGroup="true")
 	private Usuario propietario;
+
+	public Coche(String matricula, Usuario propietario) {
+		this.matricula = matricula;
+		this.propietario = propietario;
+	}
 	
 	public String getMatricula() {
 		return matricula;

@@ -1,5 +1,8 @@
 package com.parking.client;
 
+import com.parking.serialization.Coche;
+import com.parking.serialization.Usuario;
+import jakarta.ws.rs.core.Response;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -25,13 +28,13 @@ public class MainAppController {
     }
 
     @FXML
-    protected void onPropietarioButtonClick() {
+    protected void onCrearButtonClick() {
         usuarioLabel.setText("Propietario Anñadido!");
+        matriculaLabel.setText("Matrícula añadida!");
         //TODO Guardar propietario
-    }
-    @FXML
-    protected void onMatriculaButtonClick() {
-        matriculaLabel.setText("Matrícula Añadida!");
-        //TODO Guardar matrícula
+        Usuario user = new Usuario("123456789A", propietarioTF.getText(), null);
+        Coche coche = new Coche(matriculaTF.getText(), user);
+        
+        MainApp.server.anadirCoche(coche);
     }
 }
