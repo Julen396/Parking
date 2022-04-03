@@ -55,5 +55,10 @@ public class Plaza {
 	public void setCoche(Coche coche) {
 		this.coche = coche;
 	}
+	
+	@Override
+	public String toString() {
+		return "(Piso: " + this.piso + "; Zona: " + this.zona + "; Posicion: " + this.posicion + "; Coche: " + this.coche + ")";
+	}
 }
 

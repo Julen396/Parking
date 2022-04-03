@@ -36,4 +36,9 @@ public class Usuario {
 	public void setFecha_nac(Date fecha_nac) {
 		this.fecha_nac = fecha_nac;
 	}
+	
+	@Override
+	public String toString() {
+		return "(DNI: " + this.dni + "; nombre: " + this.nombre + "; fecha de nacimiento: " + this.fecha_nac + ")";
+	}
 }

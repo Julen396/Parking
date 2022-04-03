@@ -24,4 +24,9 @@ public class Coche {
 	public void setPropietario(Usuario propietario) {
 		this.propietario = propietario;
 	}
+	
+	@Override
+	public String toString() {
+		return "(Matricula: " + this.matricula + "; Propietario: " + this.propietario + ")";
+	}
 }

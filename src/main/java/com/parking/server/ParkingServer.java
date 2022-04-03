@@ -1,8 +1,8 @@
 package com.parking.server;
 
-
-
 import com.parking.serialization.Coche;
+import com.parking.serialization.Plaza;
+import com.parking.serialization.Usuario;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -30,17 +30,25 @@ public class ParkingServer{
     }
     
 	private CocheCollector cocheCollector;
+	private PlazaCollector plazaCollector;
 	public ParkingServer() {
 		cocheCollector = new CocheCollector();
+		plazaCollector = new PlazaCollector();
 		
-		/*//Juego de ensayo
+		Plaza p1 = new Plaza();
+		p1.setPiso(1);
+		anadirPlaza(p1);
+		
+		/*Usuario u1 = new Usuario();
+		u1.setDni("7777777K");
 		Coche coche1 = new Coche();
 		coche1.setMatricula("sds5645");
+		coche1.setPropietario(u1);
 		anadirCoche(coche1);
 		Coche coche2 = new Coche();
 		coche2.setMatricula("yhh8486");
-		anadirCoche(coche2);
-		*/
+		anadirCoche(coche2);*/
+		
 	}
 	
 	@POST
@@ -56,4 +64,20 @@ public class ParkingServer{
 	public Response getCoches() {
 		return Response.ok(cocheCollector.getCoches()).build();
 	}
+	
+	@POST
+	@Path("/plazas")
+	public Response anadirPlaza(Plaza plaza) {
+		plazaCollector.addPlaza(plaza);
+		System.out.println("Plaza recibido");
+		return Response.ok(plaza).build();
+	}
+
+	@GET
+	@Path("/plazas")
+	public Response getPlazas() {
+		return Response.ok(plazaCollector.getPlazas()).build();
+	}
+	
+
 }
