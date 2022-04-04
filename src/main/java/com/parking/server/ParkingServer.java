@@ -4,12 +4,9 @@ import com.parking.serialization.Coche;
 import com.parking.serialization.Plaza;
 import com.parking.serialization.Usuario;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.POST;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -49,18 +46,19 @@ public class ParkingServer{
 	
 	@POST
 	@Path("/coches")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response anadirCoche(Coche coche) {
-		cocheCollector.addCoche(coche);
 		System.out.println("Coche recibido");
+		System.out.println("Nuevo coche" + coche);
+		cocheCollector.addCoche(coche);
 		return Response.ok(coche.getMatricula()).build();
 	}
 
 	@GET
 	@Path("/coches")
-	public Response getCoches() {
-		return Response.ok(cocheCollector.getCoches()).build();
-	}
-	
+	public Response getCoches() {return Response.ok(cocheCollector.getCoches()).build();}
+
 	@POST
 	@Path("/plazas")
 	public Response anadirPlaza(Plaza plaza) {

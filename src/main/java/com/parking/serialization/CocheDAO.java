@@ -50,6 +50,7 @@ public class CocheDAO extends DataAccessObjectBase implements IDataAccessObject<
 				}
 							
 				tx.commit();
+				System.out.println("Lista de coches: " + coches);
 			} catch (Exception ex) {
 				System.out.println("  $ Error querying all challenges: " + ex.getMessage());
 			} finally {

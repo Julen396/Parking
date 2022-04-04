@@ -15,7 +15,5 @@ public class CocheCollector {
         }
     }
 
-    public ArrayList<Coche> getCoches() {
-        return (ArrayList<Coche>) CocheDAO.getInstance().getAll();
-    }
+    public ArrayList<Coche> getCoches() {return (ArrayList<Coche>) CocheDAO.getInstance().getAll();}
 }
