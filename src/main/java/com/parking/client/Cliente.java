@@ -1,4 +1,4 @@
-package com.parking.server;
+package com.parking.client;
 
 import com.parking.serialization.Coche;
 import jakarta.ws.rs.client.*;

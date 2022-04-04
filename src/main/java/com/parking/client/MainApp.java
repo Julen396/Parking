@@ -1,6 +1,5 @@
 package com.parking.client;
 
-import com.parking.server.Cliente;
 import com.parking.server.ParkingServer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
