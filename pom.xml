@@ -202,7 +202,7 @@
 			<artifactId>exec-maven-plugin</artifactId>
 			<version>1.2.1</version>
 			<configuration>
-				<mainClass>org.datanucleus.samples.jdo.tutorial.Main</mainClass>
+				<mainClass>com.parking.client.MainApp</mainClass>
 				<systemProperties>
 					<systemProperty>
 						<key>log4j.configuration</key>
