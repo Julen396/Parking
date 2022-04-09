@@ -12,20 +12,19 @@ CREATE USER 'spq'@'%' IDENTIFIED BY 'spq';
 GRANT ALL ON parkingDB.* TO 'spq'@'%';
 ```
 
-Para hacer la creación/eliminación del esquema de Base de Datos:
+Una vez hecho esto, hacer la creación/eliminación del esquema de Base de Datos:
 
 ```maven
 mvn clean compile
 mvn datanucleus:schema-create/mvn datanucleus:schema-delete
 ```
-
-
-Para ejecutar la aplicación:
-```maven
-mvn clean javafx:run OR mvn javafx:run
-```
-Para probar el servidor:
+Después, ejecuta el servidor:
 
 ```maven
 mvn exec:java
+```
+
+Finalmente, ejecuta la aplicación:
+```maven
+mvn clean javafx:run OR mvn javafx:run
 ```
