@@ -15,5 +15,20 @@ public class CocheCollector {
         }
     }
 
-    public ArrayList<Coche> getCoches() {return (ArrayList<Coche>) CocheDAO.getInstance().getAll();}
+    public ArrayList<Coche> getCoches() {
+    	return (ArrayList<Coche>) CocheDAO.getInstance().getAll();
+    }
+    
+    public ArrayList<String> getListaMatriculas(){
+    	ArrayList<Coche> listaC = getCoches();
+    	ArrayList<String> listaMat = new ArrayList<String>();
+    	for(Coche coche: listaC) {
+    		listaMat.add(coche.getMatricula());
+    	}
+    	return listaMat;
+    }
+    
+    public Coche getCocheporMatricula (String matricula) {
+    	return CocheDAO.getInstance().find(matricula);
+    }
 }

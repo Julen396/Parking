@@ -72,7 +72,7 @@ public class PlazaDAO extends DataAccessObjectBase implements IDataAccessObject<
 		try {
 			tx.begin();
 			
-			Query<?> query = pm.newQuery("SELECT FROM " + Plaza.class.getName() + " WHERE nombre == '" + param + "'");
+			Query<?> query = pm.newQuery("SELECT FROM " + Plaza.class.getName() + " WHERE plaza_id == '" + param + "'");
 			query.setUnique(true);
 			result = (Plaza) query.execute();
 			
