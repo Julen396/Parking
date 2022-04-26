@@ -35,6 +35,16 @@ public class Parking {
 	public void setPlazas(ArrayList<Plaza> plazas) {
 		this.plazas = plazas;
 	}
+	
+	public int getNumPlazasLibres() {
+		int cont = 0;
+		for(Plaza plaza: this.plazas) {
+			if(plaza.getCoche() == null) {
+				cont += 1;
+			}
+		}
+		return cont;
+	}
 
 	@Override
 	public String toString() {

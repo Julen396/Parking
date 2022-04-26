@@ -74,7 +74,7 @@ public class CocheDAO extends DataAccessObjectBase implements IDataAccessObject<
 			try {
 				tx.begin();
 				
-				Query<?> query = pm.newQuery("SELECT FROM " + Coche.class.getName() + " WHERE nombre == '" + param + "'");
+				Query<?> query = pm.newQuery("SELECT FROM " + Coche.class.getName() + " WHERE matricula == '" + param + "'");
 				query.setUnique(true);
 				result = (Coche) query.execute();
 				
