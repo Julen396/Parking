@@ -18,6 +18,8 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <jersey.version>3.0.4</jersey.version>
+    <sonar.organization>julen396</sonar.organization>
+	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
    <dependencyManagement>
        <dependencies>
