@@ -39,7 +39,7 @@ public class Parking {
 	public int getNumPlazasLibres() {
 		int cont = 0;
 		for(Plaza plaza: this.plazas) {
-			if(plaza.getCoche() == null) {
+			if(plaza.getCoche() != null) {
 				cont += 1;
 			}
 		}
