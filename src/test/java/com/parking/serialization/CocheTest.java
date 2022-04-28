@@ -5,17 +5,20 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.Date;
 /**
  * Unit test for simple App.
  */
 public class CocheTest {
     private Coche c1;
     private Usuario u;
+    private Date d;
+    
 
     @Before
     public void setUp() {
-        u = new Usuario("1234567A", "Koldo",null);
+        d = new Date(1995, 4,3);
+        u = new Usuario("1234567A", "Koldo",d);
         c1 = new Coche("123123", u);
         
     }
@@ -38,14 +41,14 @@ public class CocheTest {
     }
     @Test
     public void testSetPropietario() {
-        Usuario expected = new Usuario("7654321B", "Jon", null);
+        Usuario expected = new Usuario("7654321B", "Jon", d);
         c1.setPropietario(expected);
         assertEquals(expected, c1.getPropietario());
     }
 
     @Test
     public void testToString() {
-        String expected = "(Matricula: 123123; Propietario: (DNI: 1234567A; nombre: Koldo; fecha de nacimiento: null))";
+        String expected = "(Matricula: 123123; Propietario: (DNI: 1234567A; nombre: Koldo; fecha de nacimiento: " + d.toString() + "))";
         assertEquals(expected, c1.toString());
     }
 }
