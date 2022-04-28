@@ -16,6 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.parking.serialization.Coche;
 import com.parking.serialization.Usuario;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CocheCollectorTest {
 
 	private Coche coche1;
@@ -46,7 +47,8 @@ public class CocheCollectorTest {
 		assertEquals(coches, cocheCollector.addCoche(coche1));
 	}
 	
-	@Test public void testgetCoches() {
+	@Test 
+	public void testgetCoches() {
 
 		when(cocheCollector.getCoches()).thenReturn(coches);
 		
@@ -54,7 +56,8 @@ public class CocheCollectorTest {
 		
 	}
 	
-	@Test public void testgetListaMatriculas(){
+	@Test 
+	public void testgetListaMatriculas(){
 		
 		ArrayList<String> listaMatriculas= new ArrayList<>();
 		listaMatriculas.add(coche1.getMatricula());
@@ -65,7 +68,8 @@ public class CocheCollectorTest {
 	}
 	
 	
-	@Test public void testgetCocheporMatricula () {
+	@Test 
+	public void testgetCocheporMatricula () {
 		
 		when(cocheCollector.getCocheporMatricula(coche1.getMatricula())).thenReturn(coche1);
 		
