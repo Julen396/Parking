@@ -63,7 +63,7 @@ public class ParkingTest {
 	}
 
     @Test
-	public void testtoString() {
+	public void testToString() {
     	String expected = "" + 2;
     	assertEquals(expected, parking.toString());
 	}

@@ -1,6 +1,7 @@
 package com.parking.serialization;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -66,6 +67,12 @@ public class PlazaTest {
         Coche expected = new Coche("21", null);
         p1.setCoche(expected);
         assertEquals(expected, p1.getCoche());
+    }
+    
+    @Test
+    public void testDesocupar() {
+    	p1.desocupar();
+    	assertNull(p1.getCoche());
     }
 
     @Test
