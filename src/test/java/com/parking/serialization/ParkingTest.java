@@ -66,7 +66,7 @@ public class ParkingTest {
     @Test
 	public void testtoString() {
     	String expected = "" + 2;
-    	assertEquals(expected, "" + parking.getNumPlazas());
+    	assertEquals(expected, parking.toString());
 	}
 	
 }
