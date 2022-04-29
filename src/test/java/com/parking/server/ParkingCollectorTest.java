@@ -13,7 +13,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
 import com.parking.serialization.Parking;
-import com.parking.serialization.ParkingDAO;
 import com.parking.serialization.Plaza;
 import com.parking.serialization.Usuario;
 

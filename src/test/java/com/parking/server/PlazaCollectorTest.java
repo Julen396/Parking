@@ -14,7 +14,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
 import com.parking.serialization.Plaza;
-import com.parking.serialization.PlazaDAO;
 import com.parking.serialization.Usuario;
 
 @RunWith(MockitoJUnitRunner.class)

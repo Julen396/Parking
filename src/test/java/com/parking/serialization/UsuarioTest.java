@@ -1,7 +1,6 @@
 package com.parking.serialization;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
