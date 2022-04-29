@@ -64,9 +64,5 @@ public class Plaza {
 	public String toString() {
 		return "(Piso: " + this.piso + "; Zona: " + this.zona + "; Posicion: " + this.posicion + "; Coche: " + this.coche + ")";
 	}
-
-	public void desocupar() {
-		// TODO
-	}
 }
 
