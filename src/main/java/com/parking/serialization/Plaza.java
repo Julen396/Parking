@@ -10,7 +10,23 @@ public class Plaza {
     private int posicion;
     @Persistent(defaultFetchGroup="true")
     private Coche coche;
-    
+
+	// Constructor
+	public Plaza(int piso, String zona, int posicion, Coche coche) {
+		this.piso = piso;
+		this.zona = zona;
+		this.posicion = posicion;
+		this.coche = coche;
+	}
+
+	// Constructor vacío
+	public Plaza() {
+		this.piso = 0;
+		this.zona = "A";
+		this.posicion = 0;
+		this.coche = null;
+	}
+
     /**
      * @return numero del piso
      */

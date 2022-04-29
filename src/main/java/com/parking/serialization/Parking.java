@@ -39,7 +39,7 @@ public class Parking {
 	public int getNumPlazasLibres() {
 		int cont = 0;
 		for(Plaza plaza: this.plazas) {
-			if(plaza.getCoche() == null) {
+			if(plaza.getCoche() != null) {
 				cont += 1;
 			}
 		}
@@ -48,13 +48,16 @@ public class Parking {
 
 	@Override
 	public String toString() {
-	for (int i = 0; i < numPlazas; i++) {
-			System.out.println(plazas.get(i).getCoche().getMatricula());
-			
+		
+		int cont = 0;
+		for(Plaza plaza: this.plazas) {
+			if(plaza.getCoche() != null) {
+				cont += 1;
+				System.out.println(plaza.getCoche().getMatricula());
+			}
+		
 		}
-	return "" + numPlazas;
+		return "" + this.numPlazas;
 	}
-	
-	
 	
 }
