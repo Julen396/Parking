@@ -18,15 +18,17 @@ public class PlazaCollector {
         return (ArrayList<Plaza>) PlazaDAO.getInstance().getAll();
     }
     
-    public void ocuparPlaza(String id, Coche coche) {
+    public boolean ocuparPlaza(String id, Coche coche) {
     	Plaza p = PlazaDAO.getInstance().find(id);
     	p.setCoche(coche);
     	PlazaDAO.getInstance().save(p);
+    	return true;
     }
     
-    public void desocuparPlaza(String id) {
+    public boolean desocuparPlaza(String id) {
     	Plaza p = PlazaDAO.getInstance().find(id);
     	p.desocupar();
     	PlazaDAO.getInstance().save(p);
+    	return true;
     }
 }
