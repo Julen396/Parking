@@ -17,7 +17,7 @@ public class Cliente {
         this.webTarget = client.target(String.format("http://%s:%s/parking", hostname, port));
     }
 
-    public void addCoche(Coche coche) {
+    public boolean addCoche(Coche coche) {
 
         WebTarget cochesWebTarget = webTarget.path("/myresource/coches");
         Invocation.Builder invocationBuilder = cochesWebTarget.request(MediaType.APPLICATION_JSON);
@@ -27,6 +27,7 @@ public class Cliente {
         if (response.getStatus() != Response.Status.OK.getStatusCode()) {
             System.out.println("Path: " + webTarget.getUri() + " / Estado: " + response.getStatus());
         }
+        return true;
     }
 
     public ArrayList<Usuario> getUsuarios() {
