@@ -23,13 +23,15 @@ public class ParkingDAO extends DataAccessObjectBase implements IDataAccessObjec
 	}	
 	
 	@Override
-	public void save(Parking object) {
+	public boolean save(Parking object) {
 		super.saveObject(object);
+		return true;
 	}
 
 	@Override
-	public void delete(Parking object) {
+	public boolean delete(Parking object) {
 		super.deleteObject(object);
+		return true;
 	}
 
 	@Override

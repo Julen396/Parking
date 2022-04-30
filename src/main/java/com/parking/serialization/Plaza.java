@@ -72,13 +72,13 @@ public class Plaza {
 		this.coche = coche;
 	}
 	
+	public void desocupar() {
+		this.coche = null;
+	}
+	
 	@Override
 	public String toString() {
 		return "(Piso: " + this.piso + "; Zona: " + this.zona + "; Posicion: " + this.posicion + "; Coche: " + this.coche + ")";
-	}
-
-	public void desocupar() {
-		// TODO Hacer metodo desocupar
 	}
 }
 
