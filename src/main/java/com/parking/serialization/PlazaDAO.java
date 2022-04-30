@@ -23,13 +23,15 @@ public class PlazaDAO extends DataAccessObjectBase implements IDataAccessObject<
 	}	
 	
 	@Override
-	public void save(Plaza object) {
+	public boolean save(Plaza object) {
 		super.saveObject(object);
+		return true;
 	}
 
 	@Override
-	public void delete(Plaza object) {
+	public boolean delete(Plaza object) {
 		super.deleteObject(object);
+		return true;
 	}
 
 	@Override

@@ -24,13 +24,15 @@ public class CocheDAO extends DataAccessObjectBase implements IDataAccessObject<
 		}	
 		
 		@Override
-		public void save(Coche object) {
+		public boolean save(Coche object) {
 			super.saveObject(object);
+			return true;
 		}
 
 		@Override
-		public void delete(Coche object) {
+		public boolean delete(Coche object) {
 			super.deleteObject(object);
+			return true;
 		}
 
 		@Override
