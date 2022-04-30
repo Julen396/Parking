@@ -64,6 +64,12 @@ public class ParkingTest {
 
     @Test
 	public void testToString() {
+    	ArrayList<Plaza> plazas = new ArrayList<>();
+    	Plaza plaza2 = new Plaza(3, "C", 12, coche);
+    	Plaza plaza3 = new Plaza(4, "C", 14, null);
+		plazas.add(plaza2);
+		plazas.add(plaza3);
+		parking.setPlazas(plazas);
     	String expected = "" + 2;
     	assertEquals(expected, parking.toString());
 	}
