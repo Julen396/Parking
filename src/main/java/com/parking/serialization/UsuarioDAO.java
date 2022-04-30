@@ -23,15 +23,13 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 	}	
 	
 	@Override
-	public boolean save(Usuario object) {
+	public void save(Usuario object) {
 		super.saveObject(object);
-		return true;
 	}
 
 	@Override
-	public boolean delete(Usuario object) {
+	public void delete(Usuario object) {
 		super.deleteObject(object);
-		return true;
 	}
 
 	@Override

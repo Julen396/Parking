@@ -9,8 +9,7 @@ import javax.jdo.Transaction;
 public class DataAccessObjectBase {	
 	protected static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	
-	public boolean deleteObject(Object object) {
-		boolean result=false;
+	public void deleteObject(Object object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 
@@ -18,10 +17,8 @@ public class DataAccessObjectBase {
 			tx.begin();			
 			pm.deletePersistent(object);			
 			tx.commit();
-			result=true;
 		} catch (Exception ex) {
 			System.out.println(" $ Error deleting an object: " + ex.getMessage());
-			result=false;
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -29,11 +26,9 @@ public class DataAccessObjectBase {
 
 			pm.close();
 		}
-		return result;
 	}
 	
-	public boolean saveObject(Object object) {
-		boolean result=false;
+	public void saveObject(Object object) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 
@@ -41,10 +36,8 @@ public class DataAccessObjectBase {
 			tx.begin();
 			pm.makePersistent(object);
 			tx.commit();
-			result=true;
 		} catch (Exception ex) {
 			System.out.println(" $ Error storing an object: " + ex.getMessage());
-			result=false;
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -52,6 +45,5 @@ public class DataAccessObjectBase {
 
 			pm.close();
 		}
-		return result;
 	}
 }
