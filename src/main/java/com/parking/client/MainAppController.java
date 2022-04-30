@@ -24,6 +24,8 @@ public class MainAppController {
         MainApp.initRootLayout(getClass().getResource("usuarioWindow.fxml"));
     }
     @FXML
+    protected void onMostrarUsuariosButtonClick() {MainApp.initRootLayout(getClass().getResource("mostrarUsuariosWindow.fxml")); }
+    @FXML
     protected void onPlazaButtonClick() {
         MainApp.initRootLayout(getClass().getResource("plazaWindow.fxml"));
     }
@@ -32,7 +34,8 @@ public class MainAppController {
     protected void onCrearButtonClick() {
         usuarioLabel.setText("Propietario Anñadido!");
         matriculaLabel.setText("Matrícula añadida!");
-        //TODO Guardar propietario
+
+        //Guardar propietario
         Usuario user = new Usuario("1234567A", propietarioTF.getText(), new Date());
         Coche coche = new Coche(matriculaTF.getText(), user);
 

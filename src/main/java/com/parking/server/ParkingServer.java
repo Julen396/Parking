@@ -28,19 +28,11 @@ public class ParkingServer{
     
 	private CocheCollector cocheCollector;
 	private PlazaCollector plazaCollector;
+	private UsuarioCollector usuarioCollector;
 	public ParkingServer() {
 		cocheCollector = new CocheCollector();
 		plazaCollector = new PlazaCollector();
-		
-		/*Usuario u1 = new Usuario();
-		u1.setDni("7777777K");
-		Coche coche1 = new Coche();
-		coche1.setMatricula("sds5645");
-		coche1.setPropietario(u1);
-		anadirCoche(coche1);
-		Coche coche2 = new Coche();
-		coche2.setMatricula("yhh8486");
-		anadirCoche(coche2);*/
+		usuarioCollector = new UsuarioCollector();
 		
 	}
 	
@@ -72,6 +64,11 @@ public class ParkingServer{
 	public Response getPlazas() {
 		return Response.ok(plazaCollector.getPlazas()).build();
 	}
+
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/usuarios")
+	public Response getUsuarios() { return Response.ok(usuarioCollector.getUsuarios()).build(); }
 	
 
 }

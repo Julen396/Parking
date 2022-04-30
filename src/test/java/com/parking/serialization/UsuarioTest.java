@@ -12,6 +12,7 @@ import org.junit.Test;
  */
 public class UsuarioTest {
     private Usuario u;
+    private Usuario uVacio;
     private Date d;
     private Date d1;
 
@@ -20,6 +21,7 @@ public class UsuarioTest {
         d = new Date(1995, 4,3);
         d1 = new Date(1940, 11,30);
         u = new Usuario("1234567A", "Jon", d);
+        uVacio = new Usuario();
     }
 
     @Test

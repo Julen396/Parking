@@ -17,6 +17,12 @@ public class Usuario {
 		this.fecha_nac = fecha_nac;
 	}
 
+	public Usuario() {
+		this.dni = "11111111A";
+		this.nombre = "Deault";
+		this.fecha_nac = null;
+	}
+
 	public String getDni() {
 		return dni;
 	}

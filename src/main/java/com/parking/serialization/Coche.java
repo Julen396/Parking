@@ -13,6 +13,11 @@ public class Coche {
 		this.matricula = matricula;
 		this.propietario = propietario;
 	}
+
+	public Coche() {
+		this.matricula = "Default";
+		this.propietario = null;
+	}
 	
 	public String getMatricula() {
 		return matricula;

@@ -1,9 +1,12 @@
 package com.parking.client;
 
 import com.parking.serialization.Coche;
+import com.parking.serialization.Usuario;
 import jakarta.ws.rs.client.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
+import java.util.ArrayList;
 
 public class Cliente {
     Client client;
@@ -24,5 +27,20 @@ public class Cliente {
         if (response.getStatus() != Response.Status.OK.getStatusCode()) {
             System.out.println("Path: " + webTarget.getUri() + " / Estado: " + response.getStatus());
         }
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+
+        WebTarget usuariosWebTarget = webTarget.path("/myresource/usuarios");
+        Invocation.Builder invocationBuilder = usuariosWebTarget.request(MediaType.APPLICATION_JSON);
+
+        Response response = invocationBuilder.get();
+        if (response.getStatus() == Response.Status.OK.getStatusCode()) {
+            ArrayList<Usuario> usuarios = response.readEntity(ArrayList.class);
+            return usuarios;
+        } else {
+            return null;
+        }
+
     }
 }
