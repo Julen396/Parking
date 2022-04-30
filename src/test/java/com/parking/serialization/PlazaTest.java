@@ -74,4 +74,9 @@ public class PlazaTest {
         String expected = "(Piso: 3; Zona: C; Posicion: 12; Coche: (Matricula: 123123; Propietario: null))";
         assertEquals(expected, p2.toString());
     }
+
+    @Test
+    public void testDesocupar() {
+        p1.desocupar();
+    }
 }

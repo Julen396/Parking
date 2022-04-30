@@ -78,7 +78,7 @@ public class Plaza {
 	}
 
 	public void desocupar() {
-		// TODO
+		// TODO Hacer metodo desocupar
 	}
 }
 

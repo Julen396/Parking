@@ -45,7 +45,7 @@ public class MainApp extends Application {
             primaryStage.show();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error al iniciar la ventana");
         }
     }
 
