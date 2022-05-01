@@ -26,6 +26,6 @@ jobs:
         run: | 
           sudo /etc/init.d/mysql start
           mysql -uroot -proot < src/sql/create-parking.sql
-          mvn --batch-mode --update-snapshots compile 
-          mvn --batch-mode --update-snapshots datanucleus:schema-create
+          mvn --batch-mode --update-snapshots compile
           mvn --batch-mode --update-snapshots datanucleus:enhance
+          mvn --batch-mode --update-snapshots datanucleus:schema-create
