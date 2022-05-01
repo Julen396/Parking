@@ -52,7 +52,7 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 						
 			tx.commit();
 		} catch (Exception ex) {
-			System.out.println("  $ Error querying all challenges: " + ex.getMessage());
+			System.out.println("  $ Error querying all users: " + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -80,7 +80,7 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 			
 			tx.commit();
 		} catch (Exception ex) {
-			System.out.println("  $ Error querying a Challenge: " + ex.getMessage());
+			System.out.println("  $ Error querying a User: " + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();

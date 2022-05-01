@@ -1,12 +1,14 @@
 package com.parking.serialization;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.jdo.annotations.PersistenceCapable;
 
 
 @PersistenceCapable(detachable="true")
-public class Usuario {
+public class Usuario implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String dni;
 	private String nombre;
 	private Date fecha_nac;
