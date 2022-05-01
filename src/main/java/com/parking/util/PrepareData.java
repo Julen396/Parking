@@ -1,5 +1,7 @@
 package com.parking.util;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Date;
 
 import javax.jdo.JDOHelper;
@@ -17,7 +19,7 @@ public class PrepareData {
 		Transaction tx = pm.currentTransaction();
 		try {
 			tx.begin();
-			Usuario u1 = new Usuario("7445268C", "Unai", new Date());
+			Usuario u1 = new Usuario("7445268C", "Unai", LocalDate.of(2001, Month.DECEMBER, 12));
 			
 			pm.makePersistent(u1);
 

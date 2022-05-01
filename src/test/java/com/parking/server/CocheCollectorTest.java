@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -21,13 +23,13 @@ public class CocheCollectorTest {
 
 	private Coche coche1;
 	private Usuario usuario;
-	private Date fecha;
+	private LocalDate fecha;
 	private ArrayList<Coche> coches;
 	CocheCollector cocheCollector;
 	
 	@Before
 	public void setUp() {
-		fecha = new Date(2000, 5, 15);
+		fecha = LocalDate.of(2000, Month.MAY, 15);
 		
 		usuario = new Usuario("123456789A", "Aitor", fecha);
 		

@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Date;
 
 
@@ -36,7 +38,7 @@ public class MainAppController {
         matriculaLabel.setText("Matrícula añadida!");
 
         //Guardar propietario
-        Usuario user = new Usuario("1234567A", propietarioTF.getText(), new Date());
+        Usuario user = new Usuario("1234567A", propietarioTF.getText(), LocalDate.of(2001, Month.DECEMBER, 12));
         Coche coche = new Coche(matriculaTF.getText(), user);
 
         MainApp.cliente.addCoche(coche);

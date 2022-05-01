@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class UsuarioDAOTest {
 	UsuarioDAO usuarioDAO;
-	private Date fecha;
+	private LocalDate fecha;
 	private Usuario usuario;
 	private ArrayList<Usuario> usuarios;
 	
@@ -30,7 +32,7 @@ public class UsuarioDAOTest {
 	public void setUp() {
 		
 		usuarioDAO= org.mockito.Mockito.mock(UsuarioDAO.class);
-    	fecha = new Date(2000, 5, 15);
+		fecha = LocalDate.of(2000, Month.MAY, 15);
     	usuario = new Usuario("123456789A", "Aitor", fecha );
     	
 		usuarios = new ArrayList<>();

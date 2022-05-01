@@ -1,6 +1,7 @@
 package com.parking.server;
 
 import com.parking.serialization.Coche;
+import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Plaza;
 import com.parking.serialization.Usuario;
 
@@ -66,9 +67,12 @@ public class ParkingServer{
 	}
 
 	@GET
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/usuarios")
-	public Response getUsuarios() { return Response.ok(usuarioCollector.getUsuarios()).build(); }
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getUsuarios() {
+		System.out.println("Petición para mandar usuarios recibida");
+		ListaUsuarios usuarios = new ListaUsuarios(usuarioCollector.getUsuarios());
+		return Response.ok(usuarios).build(); }
 	
 
 }

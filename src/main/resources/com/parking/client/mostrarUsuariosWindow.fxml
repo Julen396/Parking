@@ -17,9 +17,9 @@
    <center>
       <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="211.20001220703125" text="Nombre" />
-          <TableColumn prefWidth="162.39996337890625" text="DNI" />
-            <TableColumn prefWidth="226.4000244140625" text="Fecha de nacimiento" />
+          <TableColumn fx:id="nombreColumn" prefWidth="211.20001220703125" text="Nombre" />
+          <TableColumn fx:id="dniColumn" prefWidth="162.39996337890625" text="DNI" />
+            <TableColumn fx:id="dateColumn" prefWidth="226.4000244140625" text="Fecha de nacimiento" />
         </columns>
       </TableView>
    </center>

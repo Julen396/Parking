@@ -51,6 +51,7 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 			}
 						
 			tx.commit();
+			System.out.println("Lista de usuarios: " + usuarios);
 		} catch (Exception ex) {
 			System.out.println("  $ Error querying all users: " + ex.getMessage());
 		} finally {

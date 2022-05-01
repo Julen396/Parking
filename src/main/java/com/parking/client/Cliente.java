@@ -1,12 +1,13 @@
 package com.parking.client;
 
 import com.parking.serialization.Coche;
+import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Usuario;
 import jakarta.ws.rs.client.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente {
     Client client;
@@ -23,24 +24,30 @@ public class Cliente {
         Invocation.Builder invocationBuilder = cochesWebTarget.request(MediaType.APPLICATION_JSON);
 
         Response response = invocationBuilder.post(Entity.entity(coche, MediaType.APPLICATION_JSON));
-        System.out.println("Respuesta: " + response.getStatus());
+
         if (response.getStatus() != Response.Status.OK.getStatusCode()) {
+            System.out.println("No se pudieron obtener los coches");
             System.out.println("Path: " + webTarget.getUri() + " / Estado: " + response.getStatus());
+        } else {
+            System.out.println("Se han obtenido los coches");
         }
         return true;
     }
 
-    public ArrayList<Usuario> getUsuarios() {
-
+    public List<Usuario> getUsuarios() {
         WebTarget usuariosWebTarget = webTarget.path("/myresource/usuarios");
         Invocation.Builder invocationBuilder = usuariosWebTarget.request(MediaType.APPLICATION_JSON);
 
         Response response = invocationBuilder.get();
         if (response.getStatus() == Response.Status.OK.getStatusCode()) {
-            ArrayList<Usuario> usuarios = response.readEntity(ArrayList.class);
-            return usuarios;
+            System.out.println("Se han obtenido los usuarios");
+            ListaUsuarios usuarios = response.readEntity(ListaUsuarios.class);
+            System.out.println(usuarios);
+            return usuarios.getListUsuarios();
         } else {
-            return null;
+            System.out.println("No se pudieron obtener los usuarios");
+            ListaUsuarios usuarios = new ListaUsuarios();
+            return usuarios.getListUsuarios();
         }
 
     }

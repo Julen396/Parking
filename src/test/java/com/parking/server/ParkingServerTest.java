@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -25,7 +27,7 @@ public class ParkingServerTest {
 	private Coche coche1;
 	//ParkingServer parkingServer;
 	private Usuario usuario;
-	private Date fecha;
+	private LocalDate fecha;
 	private Plaza plaza1;
 	
 	
@@ -33,7 +35,7 @@ public class ParkingServerTest {
 	@Before
 	public void setUp() {
 		coche1 = new Coche("1234ABC", usuario);
-		fecha = new Date(2000, 5, 15);
+		fecha = LocalDate.of(2000, Month.MAY, 15);
 		usuario = new Usuario("123456789A", "Aitor", fecha);
 		plaza1 = new Plaza(3, "C", 12, coche1);
 		parkingServer= org.mockito.Mockito.mock(ParkingServer.class);

@@ -2,6 +2,8 @@ package com.parking.serialization;
 
 import static org.junit.Assert.assertEquals;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Date;
 
 import org.junit.Before;
@@ -13,13 +15,13 @@ import org.junit.Test;
 public class UsuarioTest {
     private Usuario u;
     private Usuario uVacio;
-    private Date d;
-    private Date d1;
+    private LocalDate d;
+    private LocalDate d1;
 
     @Before
     public void setUp() {
-        d = new Date(1995, 4,3);
-        d1 = new Date(1940, 11,30);
+        d = LocalDate.of(1995, Month.FEBRUARY,3);
+        d1 = LocalDate.of(1940, Month.NOVEMBER,30);
         u = new Usuario("1234567A", "Jon", d);
         uVacio = new Usuario();
     }
@@ -50,13 +52,13 @@ public class UsuarioTest {
  
     @Test
     public void testGetFecha_nac() {
-       Date expected = new Date(1995, 4,3);
+       LocalDate expected = LocalDate.of(1995, Month.FEBRUARY,3);
        assertEquals(expected, u.getFecha_nac());
     }
     @Test
     public void testSetFecha_nac() {
-        u.setFecha_nac(new Date(1940, 11,30));
-        Date expected = d1;
+        u.setFecha_nac(LocalDate.of(1940, Month.NOVEMBER,30));
+        LocalDate expected = d1;
         assertEquals(expected, u.getFecha_nac());
     }
 

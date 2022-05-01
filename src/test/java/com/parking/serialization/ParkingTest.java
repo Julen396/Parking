@@ -2,13 +2,15 @@ package com.parking.serialization;
 import static org.junit.Assert.assertEquals;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class ParkingTest {
-	private Date fecha;
+	private LocalDate fecha;
 	private Usuario usuario;
 	private Coche coche;
 	private Plaza plaza1;
@@ -17,8 +19,8 @@ public class ParkingTest {
 	
     @Before
     public void setUp() {
-    	
-    	fecha = new Date(2000, 5, 15);
+
+    	fecha = LocalDate.of(2000, Month.MAY, 15);
     	usuario = new Usuario("123456789A", "Aitor", fecha );
     	coche = new Coche("1234ABC", usuario);
     	plaza1 = new Plaza(3, "C", 12, coche);

@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Date;
 /**
  * Unit test for simple App.
@@ -12,12 +15,12 @@ public class CocheTest {
     private Coche c1;
     private Coche c2;
     private Usuario u;
-    private Date d;
+    private LocalDate d;
     
 
     @Before
     public void setUp() {
-        d = new Date(1995, 4,3);
+        d = LocalDate.of(1995, Month.APRIL,3);
         u = new Usuario("1234567A", "Koldo",d);
         c1 = new Coche("123123", u);
         c2 = new Coche();

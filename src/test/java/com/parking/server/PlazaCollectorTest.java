@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -21,14 +23,14 @@ public class PlazaCollectorTest {
 	
 	private Plaza plaza1;
 	private Coche c1;
-	private Date fecha;
+	private LocalDate fecha;
 	private Usuario usuario;
 	private ArrayList<Plaza> plazas;
 	PlazaCollector plazaCollector;
 	
 	@Before
 	public void setUp() {
-	  	fecha = new Date(2000, 5, 15);
+		fecha = LocalDate.of(2000, Month.MAY, 15);
     	usuario = new Usuario("123456789A", "Aitor", fecha );
     	c1 = new Coche("1234ABC", usuario);
 		plaza1 = new Plaza(3, "C", 12, c1);
