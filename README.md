@@ -35,5 +35,5 @@ mvn exec:java
 
 Finalmente, ejecuta la aplicación:
 ```maven
-mvn clean javafx:run OR mvn javafx:run
+mvn javafx:run
 ```
