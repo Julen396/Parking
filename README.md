@@ -1,3 +1,5 @@
+![java ci workflow](https://github.com/julen396/parking/actions/workflows/javaci.yml/badge.svg)
+
 # Parking
 Aplicación para la gestión de un parking, formada por varios gestores y un administrador.
 
