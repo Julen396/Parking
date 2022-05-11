@@ -44,4 +44,10 @@ public class ListaUsuariosTest {
         luVacia.setListUsuarios(expected);
         assertEquals(expected, luVacia.getListUsuarios());
     }
+
+    @Test
+    public void testToString() {
+        String expected = "ListaUsuarios: " + lu.getListUsuarios();
+        assertEquals(expected, lu.toString());
+    }
 }
