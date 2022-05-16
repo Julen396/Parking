@@ -20,6 +20,7 @@
     <jersey.version>3.0.4</jersey.version>
     <sonar.organization>julen396</sonar.organization>
 	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	<doxygen.config.file>${basedir}/src/main/resources/Doxyfile</doxygen.config.file>
   </properties>
    <dependencyManagement>
        <dependencies>
@@ -202,6 +203,14 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.soebes.maven.plugins</groupId>
+				<artifactId>doxygen-maven-plugin</artifactId>
+				<version>1.1.0</version>
+				<configuration>
+					<configurationFile>${doxygen.config.file}</configurationFile>
+				</configuration>
 			</plugin>
   	</plugins>
 
