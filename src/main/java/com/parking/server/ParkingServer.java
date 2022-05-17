@@ -36,6 +36,11 @@ public class ParkingServer{
 		usuarioCollector = new UsuarioCollector();
 		
 	}
+	public ParkingServer(CocheCollector cocheCollectort, PlazaCollector plazaCollectort, UsuarioCollector usuarioCollectort) {
+		cocheCollector= cocheCollectort;
+		plazaCollector= plazaCollectort;
+		usuarioCollector= usuarioCollectort;
+	}
 	
 	@POST
 	@Path("/coches")
