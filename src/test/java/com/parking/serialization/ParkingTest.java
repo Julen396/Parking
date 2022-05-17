@@ -14,6 +14,7 @@ public class ParkingTest {
 	private Usuario usuario;
 	private Coche coche;
 	private Plaza plaza1;
+	private Plaza plaza2;
 	private Parking parking;
 	
 	
@@ -24,6 +25,7 @@ public class ParkingTest {
     	usuario = new Usuario("123456789A", "Aitor", fecha );
     	coche = new Coche("1234ABC", usuario);
     	plaza1 = new Plaza(3, "C", 12, coche);
+		plaza2 = new Plaza(2, "A", 12, null);
     	parking = new Parking(2);
     }
     
@@ -58,8 +60,9 @@ public class ParkingTest {
 	public void testgetNumPlazasLibres() {
     	int expected = 1;
 		ArrayList<Plaza> plazas = new ArrayList<>();
-		Plaza plaza2 = new Plaza(3, "C", 12, coche);
+		Plaza plaza3 = new Plaza(3, "C", 12, coche);
 		plazas.add(plaza2);
+		plazas.add(plaza3);
 		parking.setPlazas(plazas);
     	assertEquals(expected, parking.getNumPlazasLibres());
 	}

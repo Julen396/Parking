@@ -20,6 +20,6 @@ public class ListaUsuarios {
 
     @Override
     public String toString() {
-        return "ListaUsuarios: " + listUsuarios;
+        return "ListaUsuarios: " + listUsuarios.toString();
     }
 }

@@ -39,3 +39,7 @@ Finalmente, ejecuta la aplicación:
 ```maven
 mvn javafx:run
 ```
+Documentacion:
+```
+mvn doxygen:report
+```

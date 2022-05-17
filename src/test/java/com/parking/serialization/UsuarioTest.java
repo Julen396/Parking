@@ -34,8 +34,10 @@ public class UsuarioTest {
     @Test
     public void testSetDni() {
         u.setDni("8765432Z");
+        uVacio.setDni("123456789");
         String expected = "8765432Z";
         assertEquals(expected, u.getDni());
+        assertEquals("11111111A", uVacio.getDni());
     }
 
     @Test

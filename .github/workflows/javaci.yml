@@ -29,3 +29,5 @@ jobs:
           mvn --batch-mode --update-snapshots compile
           mvn --batch-mode --update-snapshots datanucleus:enhance
           mvn --batch-mode --update-snapshots datanucleus:schema-create
+      - name: Generate documentation
+        run: mvn doxygen:report

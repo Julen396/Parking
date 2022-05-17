@@ -16,6 +16,7 @@ import javax.jdo.Transaction;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -41,6 +42,7 @@ public class UsuarioDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testsave() {
 		when(usuarioDAO.save(usuario)).thenReturn(true);
 
@@ -48,6 +50,7 @@ public class UsuarioDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void testdelete() {
 		when(usuarioDAO.delete(usuario)).thenReturn(true);
 
@@ -55,6 +58,7 @@ public class UsuarioDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void testgetAll() {
 		when(usuarioDAO.getAll()).thenReturn(usuarios);
 		
@@ -62,6 +66,7 @@ public class UsuarioDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void testfind() {
 		when(usuarioDAO.find("parametro")).thenReturn(usuario);
 		

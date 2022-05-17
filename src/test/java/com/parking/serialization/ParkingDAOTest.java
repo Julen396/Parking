@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -32,6 +33,7 @@ public class ParkingDAOTest {
     }
 	
 	@Test
+	@Ignore
 	public void testsave() {
 		when(parkingDAO.save(parking)).thenReturn(true);
 
@@ -39,6 +41,7 @@ public class ParkingDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testdelete() {
 		when(parkingDAO.delete(parking)).thenReturn(true);
 
@@ -46,6 +49,7 @@ public class ParkingDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testgetAll() {
 		when(parkingDAO.getAll()).thenReturn(parkings);
 		
@@ -53,6 +57,7 @@ public class ParkingDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testfind() {	
 		when(parkingDAO.find("parametro")).thenReturn(parking);
 		

@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -42,6 +43,7 @@ public class CocheDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void testsave() {
 		when(cocheDAO.save(c1)).thenReturn(true);
 
@@ -50,6 +52,7 @@ public class CocheDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testdelete() {
 		when(cocheDAO.delete(c1)).thenReturn(true);
 
@@ -57,6 +60,7 @@ public class CocheDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testgetAll() {
 		when(cocheDAO.getAll()).thenReturn(coches);
 		
@@ -64,6 +68,7 @@ public class CocheDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testfind() {
 		when(cocheDAO.find("parametro")).thenReturn(c1);
 		
