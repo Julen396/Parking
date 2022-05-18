@@ -35,6 +35,7 @@ public class ParkingServerTest {
 	private ListaUsuarios listaUsuarios;
 	
 	ParkingServer parkingServer;
+	ParkingServer parkingServerVacio;
 	
 	CocheCollector cocheCollector;
 	PlazaCollector plazaCollector;
@@ -50,6 +51,7 @@ public class ParkingServerTest {
 		plazaCollector= org.mockito.Mockito.mock(PlazaCollector.class);
 		usuarioCollector= org.mockito.Mockito.mock(UsuarioCollector.class);
 		parkingServer=new ParkingServer(cocheCollector, plazaCollector, usuarioCollector);
+		parkingServerVacio=new ParkingServer();
 	}
 	@Test
 	public void testanadirCoche() {
