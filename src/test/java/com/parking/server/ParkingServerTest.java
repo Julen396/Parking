@@ -10,7 +10,11 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.Required;
+import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -23,8 +27,11 @@ import com.parking.serialization.Usuario;
 
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import junit.framework.JUnit4TestAdapter;
 
 @RunWith(MockitoJUnitRunner.class)
+@PerfTest(invocations = 5)
+@Required(max = 1200, average = 250)
 public class ParkingServerTest {
 	
 	private Coche coche1;
@@ -40,6 +47,15 @@ public class ParkingServerTest {
 	PlazaCollector plazaCollector;
 	UsuarioCollector usuarioCollector;
 	
+	// If you use the EmptyReportModule, the report is not generated
+	//@Rule public ContiPerfRule rule = new ContiPerfRule(new EmptyReportModule());
+	@Rule public ContiPerfRule rule = new ContiPerfRule();
+	
+	public static junit.framework.Test suite() {
+		 return new JUnit4TestAdapter(ParkingServerTest.class);
+	}
+
+	
 	@Before
 	public void setUp() {
 		coche1 = new Coche("1234ABC", usuario);
@@ -52,6 +68,8 @@ public class ParkingServerTest {
 		parkingServer=new ParkingServer(cocheCollector, plazaCollector, usuarioCollector);
 	}
 	@Test
+    @PerfTest(invocations = 1000, threads = 20)
+    @Required(max = 80, average = 60)
 	public void testanadirCoche() {
 		
 		Response response = parkingServer.anadirCoche(coche1);
