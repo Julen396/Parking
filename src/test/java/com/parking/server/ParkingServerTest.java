@@ -17,9 +17,12 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
+import com.parking.serialization.CocheDAO;
 import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Plaza;
+import com.parking.serialization.PlazaDAO;
 import com.parking.serialization.Usuario;
+import com.parking.serialization.UsuarioDAO;
 
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -41,6 +44,10 @@ public class ParkingServerTest {
 	PlazaCollector plazaCollector;
 	UsuarioCollector usuarioCollector;
 	
+	PlazaDAO pldao;
+	CocheDAO cdao;
+	UsuarioDAO udao;
+	
 	@Before
 	public void setUp() {
 		coche1 = new Coche("1234ABC", usuario);
@@ -52,11 +59,15 @@ public class ParkingServerTest {
 		usuarioCollector= org.mockito.Mockito.mock(UsuarioCollector.class);
 		parkingServer=new ParkingServer(cocheCollector, plazaCollector, usuarioCollector);
 		parkingServerVacio=new ParkingServer();
+		
+		cdao = org.mockito.Mockito.mock(CocheDAO.class);
+		pldao = org.mockito.Mockito.mock(PlazaDAO.class);
+		udao = org.mockito.Mockito.mock(UsuarioDAO.class);
 	}
 	@Test
 	public void testanadirCoche() {
 		
-		Response response = parkingServer.anadirCoche(coche1);
+		Response response = parkingServer.anadirCoche(coche1, cdao);
 		
 		assertEquals(coche1.getMatricula(), response.getEntity());
 	}
@@ -67,9 +78,9 @@ public class ParkingServerTest {
 		ArrayList<Coche> coches = new ArrayList<>();
 		coches.add(coche1);	
 		
-		when(cocheCollector.getCoches()).thenReturn(coches);
+		when(cocheCollector.getCoches(cdao)).thenReturn(coches);
 		
-		Response response = parkingServer.getCoches();
+		Response response = parkingServer.getCoches(cdao);
 		
 		assertEquals(coches, response.getEntity());
 	}
@@ -77,7 +88,7 @@ public class ParkingServerTest {
 	@Test
 	public void testAnadirPlaza() {
 		
-		Response response = parkingServer.anadirPlaza(plaza1);
+		Response response = parkingServer.anadirPlaza(plaza1, pldao);
 		
 		assertEquals(plaza1, response.getEntity());
 	}
@@ -88,9 +99,9 @@ public class ParkingServerTest {
 		ArrayList<Plaza> plazas = new ArrayList<>();
 		plazas.add(plaza1);	
 		
-		when(plazaCollector.getPlazas()).thenReturn(plazas);
+		when(plazaCollector.getPlazas(pldao)).thenReturn(plazas);
 		
-		Response response = parkingServer.getPlazas();
+		Response response = parkingServer.getPlazas(pldao);
 		
 		assertEquals(plazas, response.getEntity());
 	}
@@ -103,9 +114,9 @@ public class ParkingServerTest {
 		
 		listaUsuarios = new ListaUsuarios(usuarios);
 		
-		when(usuarioCollector.getUsuarios()).thenReturn(usuarios);
+		when(usuarioCollector.getUsuarios(udao)).thenReturn(usuarios);
 		
-		Response response = parkingServer.getUsuarios();
+		Response response = parkingServer.getUsuarios(udao);
 		ListaUsuarios lu = (ListaUsuarios) response.getEntity();
 		int i = 0;
 		for (Usuario u : listaUsuarios.getListUsuarios()) {

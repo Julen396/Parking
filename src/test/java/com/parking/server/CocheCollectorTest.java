@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
+import com.parking.serialization.CocheDAO;
 import com.parking.serialization.Usuario;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -26,6 +27,7 @@ public class CocheCollectorTest {
 	private LocalDate fecha;
 	private ArrayList<Coche> coches;
 	CocheCollector cocheCollector;
+	CocheDAO cdao;
 	
 	@Before
 	public void setUp() {
@@ -39,22 +41,23 @@ public class CocheCollectorTest {
 		coches.add(coche1);
 		
 		cocheCollector= org.mockito.Mockito.mock(CocheCollector.class);
+		cdao = org.mockito.Mockito.mock(CocheDAO.class);
 	}
 
 	@Test
 	public void testaddCoche() {
 
-		when(cocheCollector.addCoche(coche1)).thenReturn(coches);
+		when(cocheCollector.addCoche(coche1, cdao)).thenReturn(coches);
 
-		assertEquals(coches, cocheCollector.addCoche(coche1));
+		assertEquals(coches, cocheCollector.addCoche(coche1, cdao));
 	}
 	
 	@Test 
 	public void testgetCoches() {
 
-		when(cocheCollector.getCoches()).thenReturn(coches);
+		when(cocheCollector.getCoches(cdao)).thenReturn(coches);
 		
-		assertEquals(coches, cocheCollector.getCoches());
+		assertEquals(coches, cocheCollector.getCoches(cdao));
 		
 	}
 	
@@ -64,18 +67,18 @@ public class CocheCollectorTest {
 		ArrayList<String> listaMatriculas= new ArrayList<>();
 		listaMatriculas.add(coche1.getMatricula());
 		
-		when(cocheCollector.getListaMatriculas()).thenReturn(listaMatriculas);
+		when(cocheCollector.getListaMatriculas(cdao)).thenReturn(listaMatriculas);
 		
-		assertEquals(listaMatriculas, cocheCollector.getListaMatriculas());
+		assertEquals(listaMatriculas, cocheCollector.getListaMatriculas(cdao));
 	}
 	
 	
 	@Test 
 	public void testgetCocheporMatricula () {
 		
-		when(cocheCollector.getCocheporMatricula(coche1.getMatricula())).thenReturn(coche1);
+		when(cocheCollector.getCocheporMatricula(coche1.getMatricula(), cdao)).thenReturn(coche1);
 		
-		assertEquals(coche1, cocheCollector.getCocheporMatricula(coche1.getMatricula()));
+		assertEquals(coche1, cocheCollector.getCocheporMatricula(coche1.getMatricula(), cdao));
 	}
 	
 }

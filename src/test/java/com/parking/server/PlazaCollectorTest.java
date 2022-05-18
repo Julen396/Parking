@@ -16,6 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
 import com.parking.serialization.Plaza;
+import com.parking.serialization.PlazaDAO;
 import com.parking.serialization.Usuario;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -27,6 +28,7 @@ public class PlazaCollectorTest {
 	private Usuario usuario;
 	private ArrayList<Plaza> plazas;
 	PlazaCollector plazaCollector;
+	PlazaDAO pldao;
 	
 	@Before
 	public void setUp() {
@@ -39,37 +41,38 @@ public class PlazaCollectorTest {
 		plazas.add(plaza1);
 		
 		plazaCollector= org.mockito.Mockito.mock(PlazaCollector.class);
+		pldao = org.mockito.Mockito.mock(PlazaDAO.class);
 		
 		
 	}
     @Test	
 	public void addPlaza() {
-		when(plazaCollector.addPlaza(plaza1)).thenReturn(plazas);
+		when(plazaCollector.addPlaza(plaza1, pldao)).thenReturn(plazas);
 
-		assertEquals(plazas, plazaCollector.addPlaza(plaza1));
+		assertEquals(plazas, plazaCollector.addPlaza(plaza1, pldao));
     }
 
     @Test	
     public void getPlazas() {
     	
-		when(plazaCollector.getPlazas()).thenReturn(plazas);
+		when(plazaCollector.getPlazas(pldao)).thenReturn(plazas);
 		
-		assertEquals(plazas, plazaCollector.getPlazas());
+		assertEquals(plazas, plazaCollector.getPlazas(pldao));
     }
     
     @Test    
     public void ocuparPlaza() {
     	
-    	when(plazaCollector.ocuparPlaza("1", c1)).thenReturn(true);
+    	when(plazaCollector.ocuparPlaza("1", c1, pldao)).thenReturn(true);
     	
-    	assertTrue(plazaCollector.ocuparPlaza("1", c1));
+    	assertTrue(plazaCollector.ocuparPlaza("1", c1, pldao));
     }
     
     @Test    
     public void desocuparPlaza() {
     	
-    	when(plazaCollector.desocuparPlaza("1")).thenReturn(true);
+    	when(plazaCollector.desocuparPlaza("1", pldao)).thenReturn(true);
     	
-    	assertTrue(plazaCollector.desocuparPlaza("1"));
+    	assertTrue(plazaCollector.desocuparPlaza("1", pldao));
     }
 }

@@ -7,7 +7,7 @@ import com.parking.serialization.ParkingDAO;
 import com.parking.serialization.Plaza;
 
 public class ParkingCollector {
-	public ArrayList<Parking> addParking(Parking parking){
+	public ArrayList<Parking> addParking(Parking parking, ParkingDAO pdao){
 		synchronized(this) {
 			ArrayList<Plaza> listaP = new ArrayList<Plaza>();
 			for (int i=0; i<parking.getNumPlazas(); i++) {
@@ -19,8 +19,8 @@ public class ParkingCollector {
 				listaP.add(p);
 			}
 			parking.setPlazas(listaP);
-			ParkingDAO.getInstance().save(parking);
-			return (ArrayList<Parking>) ParkingDAO.getInstance().getAll();
+			pdao.save(parking);
+			return (ArrayList<Parking>) pdao.getAll();
 		}
 	}
 }

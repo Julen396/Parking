@@ -1,9 +1,12 @@
 package com.parking.server;
 
 import com.parking.serialization.Coche;
+import com.parking.serialization.CocheDAO;
 import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Plaza;
+import com.parking.serialization.PlazaDAO;
 import com.parking.serialization.Usuario;
+import com.parking.serialization.UsuarioDAO;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -40,37 +43,37 @@ public class ParkingServer{
 	@Path("/coches")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response anadirCoche(Coche coche) {
+	public Response anadirCoche(Coche coche, CocheDAO cdao) {
 		System.out.println("Coche recibido");
 		System.out.println("Nuevo coche" + coche);
-		cocheCollector.addCoche(coche);
+		cocheCollector.addCoche(coche, cdao);
 		return Response.ok(coche.getMatricula()).build();
 	}
 
 	@GET
 	@Path("/coches")
-	public Response getCoches() {return Response.ok(cocheCollector.getCoches()).build();}
+	public Response getCoches(CocheDAO cdao) {return Response.ok(cocheCollector.getCoches(cdao)).build();}
 
 	@POST
 	@Path("/plazas")
-	public Response anadirPlaza(Plaza plaza) {
-		plazaCollector.addPlaza(plaza);
+	public Response anadirPlaza(Plaza plaza, PlazaDAO pldao) {
+		plazaCollector.addPlaza(plaza, pldao);
 		System.out.println("Plaza recibido");
 		return Response.ok(plaza).build();
 	}
 
 	@GET
 	@Path("/plazas")
-	public Response getPlazas() {
-		return Response.ok(plazaCollector.getPlazas()).build();
+	public Response getPlazas(PlazaDAO pldao) {
+		return Response.ok(plazaCollector.getPlazas(pldao)).build();
 	}
 
 	@GET
 	@Path("/usuarios")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getUsuarios() {
+	public Response getUsuarios(UsuarioDAO udao) {
 		System.out.println("Petición para mandar usuarios recibida");
-		ListaUsuarios usuarios = new ListaUsuarios(usuarioCollector.getUsuarios());
+		ListaUsuarios usuarios = new ListaUsuarios(usuarioCollector.getUsuarios(udao));
 		return Response.ok(usuarios).build(); }
 	
 

@@ -15,6 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
 import com.parking.serialization.Parking;
+import com.parking.serialization.ParkingDAO;
 import com.parking.serialization.Plaza;
 import com.parking.serialization.Usuario;
 
@@ -29,8 +30,7 @@ public class ParkingCollectorTest {
 	private Parking parking1;
 	
 	private ParkingCollector parkingCollector;
-	
-	
+	private ParkingDAO pdao;
 	
     @Before
     public void setUp() {
@@ -42,16 +42,17 @@ public class ParkingCollectorTest {
     	parking1 = new Parking(2);
     	
     	parkingCollector= org.mockito.Mockito.mock(ParkingCollector.class);
+    	pdao = org.mockito.Mockito.mock(ParkingDAO.class);
     }
 	
     @Test
 	public void testaddParking(){
-    	ArrayList<Parking> parkings = new ArrayList();
+    	ArrayList<Parking> parkings = new ArrayList<Parking>();
     	parkings.add(parking1);
     	
-    	when(parkingCollector.addParking(parking1)).thenReturn(parkings);
+    	when(parkingCollector.addParking(parking1, pdao)).thenReturn(parkings);
     	
-    	assertEquals(parkings, parkingCollector.addParking(parking1));
+    	assertEquals(parkings, parkingCollector.addParking(parking1, pdao));
 		
 	}
 }
