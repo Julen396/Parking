@@ -3,16 +3,18 @@ package com.parking.serialization;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.jdo.Extent;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-import javax.jdo.Transaction;
+import javax.jdo.*;
 
-public class PlazaDAO extends DataAccessObjectBase implements IDataAccessObject<Plaza> {
+public class PlazaDAO implements IDataAccessObject<Plaza> {
 
+	private PersistenceManager pm = null;
+	private PersistenceManagerFactory pmf = null;
 	private static PlazaDAO instance;	
 	
-	private PlazaDAO() { }
+	private PlazaDAO() {
+		//pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		//pm = pmf.getPersistenceManager();
+	}
 	
 	public static PlazaDAO getInstance() {
 		if (instance == null) {
@@ -21,16 +23,22 @@ public class PlazaDAO extends DataAccessObjectBase implements IDataAccessObject<
 		
 		return instance;
 	}	
-	
+
+	public void setPM(PersistenceManager pm) {
+		this.pm = pm;
+	}
+
 	@Override
 	public boolean save(Plaza object) {
-		super.saveObject(object);
+		Transaction tx = pm.currentTransaction();
+		tx.begin();
+		pm.makePersistent(object);
+		tx.commit();
 		return true;
 	}
 
 	@Override
 	public boolean delete(Plaza object) {
-		super.deleteObject(object);
 		return true;
 	}
 

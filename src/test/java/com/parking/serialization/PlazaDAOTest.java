@@ -16,9 +16,15 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
+
 @RunWith(MockitoJUnitRunner.class)
 public class PlazaDAOTest {
-	
+
+	PersistenceManager pm;
+	PersistenceManagerFactory pmf;
 	PlazaDAO plazaDAO;
 	private LocalDate fecha;
 	private Usuario usuario;
@@ -28,8 +34,13 @@ public class PlazaDAOTest {
     
 	@Before
 	public void setUp() {
-		
-		plazaDAO= org.mockito.Mockito.mock(PlazaDAO.class);
+
+		plazaDAO = PlazaDAO.getInstance();
+		pm = org.mockito.Mockito.mock(PersistenceManager.class);
+		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+
+		when(pm.currentTransaction()).thenReturn(pmf.getPersistenceManager().currentTransaction());
+		plazaDAO.setPM(pm);
 
 		fecha = LocalDate.of(2000, Month.MAY, 15);
     	usuario = new Usuario("123456789A", "Aitor", fecha );
@@ -41,16 +52,14 @@ public class PlazaDAOTest {
 	}
 	
 	@Test
-	@Ignore
-	public void testsave() {
-		when(plazaDAO.save(plaza1)).thenReturn(true);
-
+	public void testSave() {
+		when(pm.makePersistent(plaza1)).thenReturn(plaza1);
 		assertTrue(plazaDAO.save(plaza1));
 	}
 
 	@Test
 	@Ignore
-	public void testdelete() {
+	public void testDelete() {
 		when(plazaDAO.delete(plaza1)).thenReturn(true);
 
 		assertTrue(plazaDAO.delete(plaza1));
