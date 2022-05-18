@@ -5,7 +5,7 @@ Aplicación para la gestión de un parking, formada por varios gestores y un adm
 
 El script de la creación de la base de datos es (También puede ser encontrado en src/sql/create-parking.sql):
 Contrucción y prueba
-Se puede contruir el proyecto y lanzar pruebas unitarias con el comando
+Se puede contruir el proyecto y lanzar pruebas unitarias con el comando:
 ```
 mvn test
 ```
@@ -18,7 +18,7 @@ CREATE SCHEMA parkingDB;
 CREATE USER 'spq'@'localhost' IDENTIFIED BY 'spq';
 GRANT ALL ON parkingDB.* TO 'spq'@'localhost';
 ```
-Las clases de datos deben ser procesadas antes de generar las tablas con el comando
+Las clases de datos deben ser procesadas antes de generar las tablas con el comando:
 ```
 mvn datanucleus:enhance
 ```
