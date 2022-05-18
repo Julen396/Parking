@@ -20,12 +20,6 @@ public class ParkingServer{
      *
      * @return String that will be returned as a text/plain response.
      */
-	
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getIt() {
-        return "Funciona!";
-    }
     
 	private CocheCollector cocheCollector;
 	private PlazaCollector plazaCollector;

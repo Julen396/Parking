@@ -73,7 +73,7 @@ public class ParkingServerTest {
 	}
 	
 	@Test
-	public void testanadirPlaza() {
+	public void testAnadirPlaza() {
 		
 		Response response = parkingServer.anadirPlaza(plaza1);
 		
@@ -81,7 +81,7 @@ public class ParkingServerTest {
 	}
 	
 	@Test
-	public void testgetPlazas() {
+	public void testGetPlazas() {
 		
 		ArrayList<Plaza> plazas = new ArrayList<>();
 		plazas.add(plaza1);	
@@ -94,7 +94,7 @@ public class ParkingServerTest {
 	}
 	
 	@Test
-	public void getUsuarios() {
+	public void testGetUsuarios() {
 
 		ArrayList<Usuario> usuarios = new ArrayList<>();
 		usuarios.add(usuario);
@@ -104,7 +104,13 @@ public class ParkingServerTest {
 		when(usuarioCollector.getUsuarios()).thenReturn(usuarios);
 		
 		Response response = parkingServer.getUsuarios();
-		assertNotEquals(listaUsuarios, response.getEntity());
+		ListaUsuarios lu = (ListaUsuarios) response.getEntity();
+		int i = 0;
+		for (Usuario u : listaUsuarios.getListUsuarios()) {
+			assertEquals(u, lu.getListUsuarios().get(i));
+			i++;
+		}
+
 	}
 	
 }
