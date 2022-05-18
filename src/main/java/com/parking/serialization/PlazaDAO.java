@@ -9,28 +9,32 @@ public class PlazaDAO implements IDataAccessObject<Plaza> {
 
 	private PersistenceManager pm = null;
 	private PersistenceManagerFactory pmf = null;
-	private static PlazaDAO instance;	
-	
+	private Transaction tx = null;
+	private static PlazaDAO instance;
+
 	private PlazaDAO() {
 		//pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		//pm = pmf.getPersistenceManager();
 	}
-	
+
 	public static PlazaDAO getInstance() {
 		if (instance == null) {
 			instance = new PlazaDAO();
-		}		
-		
+		}
+
 		return instance;
-	}	
+	}
 
 	public void setPM(PersistenceManager pm) {
 		this.pm = pm;
 	}
 
+	public void setTransaction(Transaction tx) {
+		this.tx = tx;
+	}
+
 	@Override
 	public boolean save(Plaza object) {
-		Transaction tx = pm.currentTransaction();
 		tx.begin();
 		pm.makePersistent(object);
 		tx.commit();

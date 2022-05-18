@@ -1,59 +1,62 @@
 package com.parking.serialization;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Transaction;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlazaDAOTest {
 
 	PersistenceManager pm;
 	PersistenceManagerFactory pmf;
+	Transaction tx;
 	PlazaDAO plazaDAO;
-	private LocalDate fecha;
-	private Usuario usuario;
-	private Coche coche;
-	private Plaza plaza1;
-    private ArrayList<Plaza> plazas;
-    
+	LocalDate fecha;
+	Usuario usuario;
+	Coche coche;
+	Plaza plaza1;
+    ArrayList<Plaza> plazas;
+
 	@Before
 	public void setUp() {
 
 		plazaDAO = PlazaDAO.getInstance();
+		tx = org.mockito.Mockito.mock(Transaction.class);
 		pm = org.mockito.Mockito.mock(PersistenceManager.class);
-		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		//pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 
-		when(pm.currentTransaction()).thenReturn(pmf.getPersistenceManager().currentTransaction());
 		plazaDAO.setPM(pm);
+		plazaDAO.setTransaction(tx);
 
 		fecha = LocalDate.of(2000, Month.MAY, 15);
     	usuario = new Usuario("123456789A", "Aitor", fecha );
     	coche = new Coche("1234ABC", usuario);
     	plaza1 = new Plaza(3, "C", 12, coche);
-    	
+
 		plazas = new ArrayList<>();
 		plazas.add(plaza1);
 	}
-	
+
 	@Test
 	public void testSave() {
 		when(pm.makePersistent(plaza1)).thenReturn(plaza1);
+		doNothing().when(tx).begin();
+		doNothing().when(tx).commit();
 		assertTrue(plazaDAO.save(plaza1));
 	}
 
