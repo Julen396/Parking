@@ -218,6 +218,23 @@
 					<configurationFile>${doxygen.config.file}</configurationFile>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.0</version>
+				<configuration>
+					<includes>
+						<include>categories.PerformanceTest</include>
+					</includes>
+					<groups>categories.PerformanceTest</groups>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
   	</plugins>
 
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
@@ -239,6 +256,9 @@
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
+          <configuration>
+		  		<excludedGroups>categories.PerformanceTest</excludedGroups>
+		  </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
