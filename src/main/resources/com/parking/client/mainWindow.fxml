@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.client.MainAppController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.client.MainAppController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,11 +27,12 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#onCrearButtonClick" text="Crear" />
+            <Button mnemonicParsing="false" onAction="#onCrearButtonClick" text="Iniciar Sesion" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="45.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#onPlazaButtonClick" text="Plaza" />
-                  <Button mnemonicParsing="false" onAction="#onUsuarioButtonClick" text="Usuario" />
+                  <Button mnemonicParsing="false" onAction="#onUsuarioButtonClick" text="Registrar Usuario" />
+                  <Button mnemonicParsing="false" onAction="#onUsuarioButtonClick" text="Registrar Coche" />
                   <Button mnemonicParsing="false" onAction="#onMostrarUsuariosButtonClick" text="Mostrar Usuarios" />
                </children>
             </HBox>
