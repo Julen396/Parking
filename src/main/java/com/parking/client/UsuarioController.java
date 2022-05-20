@@ -37,11 +37,13 @@ public class UsuarioController {
     	dniText.setText("Anyadido dni!");
     	fecha_nctoText.setText("Anyadida fecha de nacimiento!");
     	nombreText.setText("Anyadido nombre!");
+    	System.out.println(dni.getText() + " registrado correctamente!");
     }
 
     @FXML
     void onHomeButtonClick() {
         MainApp.initRootLayout(getClass().getResource("mainWindow.fxml"));
+        System.out.println(nombre.getText() + " registrado correctamente!");
     }
 
 }
