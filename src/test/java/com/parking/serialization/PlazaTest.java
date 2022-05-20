@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Test unitario de la clase plaza
  */
 public class PlazaTest {
     private Plaza p1;

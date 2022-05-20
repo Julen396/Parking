@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Test unitario de la clase usuario
  */
 public class UsuarioTest {
     private Usuario u;
