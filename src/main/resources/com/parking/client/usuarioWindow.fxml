@@ -7,11 +7,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.client.UsuarioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.client.UsuarioController">
    <children>
       <TextField fx:id="dni" layoutX="34.0" layoutY="126.0" prefHeight="25.0" prefWidth="165.0" />
       <Label fx:id="dniText" layoutX="65.0" layoutY="76.0" text="Introducir DNI" />
-      <Button fx:id="bRegistrar" layoutX="260.0" layoutY="296.0" mnemonicParsing="false" onAction="#onMatriculaButtonClick" text="Registrarme" />
+      <Button fx:id="bRegistrar" layoutX="260.0" layoutY="296.0" mnemonicParsing="false" onAction="#onHomeButtonClick" text="Registrarme" />
       <TextField fx:id="nombre" layoutX="372.0" layoutY="126.0" prefHeight="25.0" prefWidth="165.0" />
       <Label fx:id="nombreText" layoutX="396.0" layoutY="76.0" text="Introduzca su nombre" />
       <DatePicker fx:id="fecha_ncto" layoutX="214.0" layoutY="230.0" />
@@ -19,3 +19,4 @@
       <Hyperlink layoutX="23.0" layoutY="14.0" onAction="#onHomeButtonClick" text="Home" />
    </children>
 </AnchorPane>
+
