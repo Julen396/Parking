@@ -8,7 +8,10 @@ import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
-
+/**
+ * Test unitario de la clase parking
+ *
+ */
 public class ParkingTest {
 	private LocalDate fecha;
 	private Usuario usuario;

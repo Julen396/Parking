@@ -9,7 +9,10 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Test unitario de la clase Lista Usuarios
+ *
+ */
 public class ListaUsuariosTest {
     private ListaUsuarios lu;
     private ListaUsuarios luVacia;

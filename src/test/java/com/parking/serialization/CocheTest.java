@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Date;
 /**
- * Unit test for simple App.
+ * Test unitario de la clase coche.
  */
 public class CocheTest {
     private Coche c1;

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.net.URI;
 
 /**
- * Main class.
+ * Clase principal.
  *
  */
 public class ServerManagerMain {
@@ -16,7 +16,7 @@ public class ServerManagerMain {
     public static final String BASE_URI = "http://localhost:8085/parking/";
 
     /**
-     * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
+     * Inicia el servidor HTTP Grizzly exponiendo los recursos JAX-RS definidos en esta aplicación.
      * @return Grizzly HTTP server.
      */
     public static HttpServer startServer() {
@@ -30,7 +30,7 @@ public class ServerManagerMain {
     }
 
     /**
-     * Main method.
+     * Metodo principal.
      * @param args
      * @throws IOException
      */
