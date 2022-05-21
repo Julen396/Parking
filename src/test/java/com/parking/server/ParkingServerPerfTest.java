@@ -42,7 +42,7 @@ public class ParkingServerPerfTest {
     @Before
     public void setUp() {
         // start the server
-        server = ServerManagerMain.startServer();
+        //server = ServerManagerMain.startServer();
         // create the client
         Client c = ClientBuilder.newClient();
 
