@@ -76,7 +76,7 @@ public class ParkingServerTest {
 		assertEquals(coche1.getMatricula(), response.getEntity());
 	}
 	
-	@Ignore @Test
+	@Test
 	public void testGetCoches() {
 	
 		ArrayList<Coche> coches = new ArrayList<>();
@@ -97,7 +97,7 @@ public class ParkingServerTest {
 		assertEquals(plaza1, response.getEntity());
 	}
 	
-	@Ignore @Test
+	@Test
 	public void testGetPlazas() {
 		
 		ArrayList<Plaza> plazas = new ArrayList<>();

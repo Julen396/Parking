@@ -9,10 +9,12 @@ import org.glassfish.grizzly.http.server.HttpServer;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.experimental.categories.Category;
@@ -36,13 +38,13 @@ import categories.PerformanceTest;
 public class ParkingServerPerfTest {
     @Rule public ContiPerfRule rule = new ContiPerfRule();
 
-    private HttpServer server;
-    private WebTarget target;
-
-    @Before
-    public void setUp() {
+    private static HttpServer server;
+    private static WebTarget target;
+	
+    @BeforeClass
+    public static void setUp() {
         // start the server
-        //server = ServerManagerMain.startServer();
+        server = ServerManagerMain.startServer();
         // create the client
         Client c = ClientBuilder.newClient();
 
@@ -53,8 +55,10 @@ public class ParkingServerPerfTest {
         // c.configuration().enable(new org.glassfish.jersey.media.json.JsonJaxbFeature());
 
         target = c.target(ServerManagerMain.BASE_URI);
+        
     }
-
+     
+    
 	@Test
     @PerfTest(invocations = 1000, threads = 20)
     @Required(max = 80, average = 60)
@@ -65,7 +69,7 @@ public class ParkingServerPerfTest {
 	}
 	
 	@Test
-	public void testgetCoches() {
+	public void testGetCoches() {
 		assertEquals(1, 1);
 	}
 	
