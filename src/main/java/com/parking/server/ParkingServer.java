@@ -46,18 +46,18 @@ public class ParkingServer{
 	public Response anadirCoche(Coche coche) {
 		System.out.println("Coche recibido");
 		System.out.println("Nuevo coche" + coche);
-		cocheCollector.addCoche(coche, CocheDAO.getInstance());
+		cocheCollector.addCoche(coche);
 		return Response.ok(coche.getMatricula()).build();
 	}
 
 	@GET
 	@Path("/coches")
-	public Response getCoches() {return Response.ok(cocheCollector.getCoches(CocheDAO.getInstance())).build();}
+	public Response getCoches() {return Response.ok(cocheCollector.getCoches()).build();}
 
 	@POST
 	@Path("/plazas")
 	public Response anadirPlaza(Plaza plaza) {
-		plazaCollector.addPlaza(plaza, PlazaDAO.getInstance());
+		plazaCollector.addPlaza(plaza);
 		System.out.println("Plaza recibido");
 		return Response.ok(plaza).build();
 	}
@@ -65,7 +65,7 @@ public class ParkingServer{
 	@GET
 	@Path("/plazas")
 	public Response getPlazas() {
-		return Response.ok(plazaCollector.getPlazas(PlazaDAO.getInstance())).build();
+		return Response.ok(plazaCollector.getPlazas()).build();
 	}
 
 	@GET
@@ -73,7 +73,7 @@ public class ParkingServer{
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getUsuarios() {
 		System.out.println("Petición para mandar usuarios recibida");
-		ListaUsuarios usuarios = new ListaUsuarios(usuarioCollector.getUsuarios(UsuarioDAO.getInstance()));
+		ListaUsuarios usuarios = new ListaUsuarios(usuarioCollector.getUsuarios());
 		return Response.ok(usuarios).build(); }
 	
 

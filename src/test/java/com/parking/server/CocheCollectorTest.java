@@ -47,17 +47,17 @@ public class CocheCollectorTest {
 	@Test
 	public void testaddCoche() {
 
-		when(cocheCollector.addCoche(coche1, cdao)).thenReturn(coches);
+		when(cocheCollector.addCoche(coche1)).thenReturn(coches);
 
-		assertEquals(coches, cocheCollector.addCoche(coche1, cdao));
+		assertEquals(coches, cocheCollector.addCoche(coche1));
 	}
 	
 	@Test 
 	public void testgetCoches() {
 
-		when(cocheCollector.getCoches(cdao)).thenReturn(coches);
+		when(cocheCollector.getCoches()).thenReturn(coches);
 		
-		assertEquals(coches, cocheCollector.getCoches(cdao));
+		assertEquals(coches, cocheCollector.getCoches());
 		
 	}
 	
@@ -67,18 +67,18 @@ public class CocheCollectorTest {
 		ArrayList<String> listaMatriculas= new ArrayList<>();
 		listaMatriculas.add(coche1.getMatricula());
 		
-		when(cocheCollector.getListaMatriculas(cdao)).thenReturn(listaMatriculas);
+		when(cocheCollector.getListaMatriculas()).thenReturn(listaMatriculas);
 		
-		assertEquals(listaMatriculas, cocheCollector.getListaMatriculas(cdao));
+		assertEquals(listaMatriculas, cocheCollector.getListaMatriculas());
 	}
 	
 	
 	@Test 
 	public void testgetCocheporMatricula () {
 		
-		when(cocheCollector.getCocheporMatricula(coche1.getMatricula(), cdao)).thenReturn(coche1);
+		when(cocheCollector.getCocheporMatricula(coche1.getMatricula())).thenReturn(coche1);
 		
-		assertEquals(coche1, cocheCollector.getCocheporMatricula(coche1.getMatricula(), cdao));
+		assertEquals(coche1, cocheCollector.getCocheporMatricula(coche1.getMatricula()));
 	}
 	
 }

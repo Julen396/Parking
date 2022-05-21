@@ -85,7 +85,7 @@ public class ParkingServerTest {
 		ArrayList<Coche> coches = new ArrayList<>();
 		coches.add(coche1);	
 		
-		when(cocheCollector.getCoches(cdao)).thenReturn(coches);
+		when(cocheCollector.getCoches()).thenReturn(coches);
 		
 		Response response = parkingServer.getCoches();
 		
@@ -106,7 +106,7 @@ public class ParkingServerTest {
 		ArrayList<Plaza> plazas = new ArrayList<>();
 		plazas.add(plaza1);	
 		
-		when(plazaCollector.getPlazas(pldao)).thenReturn(plazas);
+		when(plazaCollector.getPlazas()).thenReturn(plazas);
 		
 		Response response = parkingServer.getPlazas();
 		
@@ -121,7 +121,7 @@ public class ParkingServerTest {
 		
 		listaUsuarios = new ListaUsuarios(usuarios);
 		
-		when(usuarioCollector.getUsuarios(udao)).thenReturn(usuarios);
+		when(usuarioCollector.getUsuarios()).thenReturn(usuarios);
 		
 		Response response = parkingServer.getUsuarios();
 		ListaUsuarios lu = (ListaUsuarios) response.getEntity();

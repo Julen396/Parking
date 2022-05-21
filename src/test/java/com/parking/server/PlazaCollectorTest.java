@@ -47,32 +47,32 @@ public class PlazaCollectorTest {
 	}
     @Test	
 	public void addPlaza() {
-		when(plazaCollector.addPlaza(plaza1, pldao)).thenReturn(plazas);
+		when(plazaCollector.addPlaza(plaza1 )).thenReturn(plazas);
 
-		assertEquals(plazas, plazaCollector.addPlaza(plaza1, pldao));
+		assertEquals(plazas, plazaCollector.addPlaza(plaza1));
     }
 
     @Test	
     public void getPlazas() {
     	
-		when(plazaCollector.getPlazas(pldao)).thenReturn(plazas);
+		when(plazaCollector.getPlazas()).thenReturn(plazas);
 		
-		assertEquals(plazas, plazaCollector.getPlazas(pldao));
+		assertEquals(plazas, plazaCollector.getPlazas());
     }
     
     @Test    
     public void ocuparPlaza() {
     	
-    	when(plazaCollector.ocuparPlaza("1", c1, pldao)).thenReturn(true);
+    	when(plazaCollector.ocuparPlaza("1", c1)).thenReturn(true);
     	
-    	assertTrue(plazaCollector.ocuparPlaza("1", c1, pldao));
+    	assertTrue(plazaCollector.ocuparPlaza("1", c1));
     }
     
     @Test    
     public void desocuparPlaza() {
     	
-    	when(plazaCollector.desocuparPlaza("1", pldao)).thenReturn(true);
+    	when(plazaCollector.desocuparPlaza("1")).thenReturn(true);
     	
-    	assertTrue(plazaCollector.desocuparPlaza("1", pldao));
+    	assertTrue(plazaCollector.desocuparPlaza("1"));
     }
 }

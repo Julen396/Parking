@@ -7,28 +7,28 @@ import com.parking.serialization.Plaza;
 import com.parking.serialization.PlazaDAO;
 
 public class PlazaCollector {
-	public ArrayList<Plaza> addPlaza(Plaza plaza, PlazaDAO pldao) {
+	public ArrayList<Plaza> addPlaza(Plaza plaza) {
         synchronized(this) {
-        	pldao.save(plaza);
-            return (ArrayList<Plaza>) pldao.getAll();
+        	PlazaDAO.getInstance().save(plaza);
+            return (ArrayList<Plaza>) PlazaDAO.getInstance().getAll();
         }
     }
 
-    public ArrayList<Plaza> getPlazas(PlazaDAO pldao) {
-        return (ArrayList<Plaza>) pldao.getAll();
+    public ArrayList<Plaza> getPlazas() {
+        return (ArrayList<Plaza>) PlazaDAO.getInstance().getAll();
     }
     
-    public boolean ocuparPlaza(String id, Coche coche, PlazaDAO pldao) {
-    	Plaza p = pldao.find(id);
+    public boolean ocuparPlaza(String id, Coche coche) {
+    	Plaza p = PlazaDAO.getInstance().find(id);
     	p.setCoche(coche);
-    	pldao.save(p);
+    	PlazaDAO.getInstance().save(p);
     	return true;
     }
     
-    public boolean desocuparPlaza(String id, PlazaDAO pldao) {
-    	Plaza p = pldao.find(id);
+    public boolean desocuparPlaza(String id) {
+    	Plaza p = PlazaDAO.getInstance().find(id);
     	p.desocupar();
-    	pldao.save(p);
+    	PlazaDAO.getInstance().save(p);
     	return true;
     }
 }

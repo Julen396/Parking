@@ -50,9 +50,9 @@ public class ParkingCollectorTest {
     	ArrayList<Parking> parkings = new ArrayList<Parking>();
     	parkings.add(parking1);
     	
-    	when(parkingCollector.addParking(parking1, pdao)).thenReturn(parkings);
+    	when(parkingCollector.addParking(parking1)).thenReturn(parkings);
     	
-    	assertEquals(parkings, parkingCollector.addParking(parking1, pdao));
+    	assertEquals(parkings, parkingCollector.addParking(parking1));
 		
 	}
 }
