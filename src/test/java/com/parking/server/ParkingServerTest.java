@@ -65,10 +65,7 @@ public class ParkingServerTest {
 		usuarioCollector= org.mockito.Mockito.mock(UsuarioCollector.class);
 		parkingServer=new ParkingServer(cocheCollector, plazaCollector, usuarioCollector);
 		parkingServerVacio=new ParkingServer();
-		
-		cdao = org.mockito.Mockito.mock(CocheDAO.class);
-		pldao = org.mockito.Mockito.mock(PlazaDAO.class);
-		udao = org.mockito.Mockito.mock(UsuarioDAO.class);
+
 	}
 	
 	@Test
