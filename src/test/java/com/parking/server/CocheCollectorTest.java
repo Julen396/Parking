@@ -41,7 +41,6 @@ public class CocheCollectorTest {
 		coches.add(coche1);
 		
 		cocheCollector= org.mockito.Mockito.mock(CocheCollector.class);
-		cdao = org.mockito.Mockito.mock(CocheDAO.class);
 	}
 
 	@Test

@@ -42,7 +42,6 @@ public class ParkingCollectorTest {
     	parking1 = new Parking(2);
     	
     	parkingCollector= org.mockito.Mockito.mock(ParkingCollector.class);
-    	pdao = org.mockito.Mockito.mock(ParkingDAO.class);
     }
 	
     @Test

@@ -41,8 +41,6 @@ public class PlazaCollectorTest {
 		plazas.add(plaza1);
 		
 		plazaCollector= org.mockito.Mockito.mock(PlazaCollector.class);
-		pldao = org.mockito.Mockito.mock(PlazaDAO.class);
-		
 		
 	}
     @Test	
