@@ -38,10 +38,5 @@ public class ClienteTest {
 		assertTrue(cliente.addCoche(c1));
 	}
 	
-	@Test(timeout = 1)
-	public void testdbperformance() {
-		cliente.addCoche(c1);
-	}
-
 	
 }
