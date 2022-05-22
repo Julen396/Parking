@@ -3,14 +3,14 @@ package com.parking.serialization;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.jdo.Extent;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-import javax.jdo.Transaction;
+import javax.jdo.*;
 
-public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObject<Usuario> {
+public class UsuarioDAO implements IDataAccessObject<Usuario> {
 
-	private static UsuarioDAO instance;	
+	private static UsuarioDAO instance;
+	private PersistenceManager pm = null;
+	private PersistenceManagerFactory pmf = null;
+	private Transaction tx = null;
 	
 	private UsuarioDAO() { }
 	
@@ -20,24 +20,45 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 		}		
 		
 		return instance;
-	}	
-	
+	}
+
+	public void setPM(PersistenceManager pm) {
+		this.pm = pm;
+	}
+
+	public void setTransaction(Transaction tx) {
+		this.tx = tx;
+	}
+
 	@Override
 	public boolean save(Usuario object) {
-		super.saveObject(object);
-		return true;
+		boolean result;
+
+		try {
+			tx.begin();
+			pm.makePersistent(object);
+			tx.commit();
+			result=true;
+		} catch (Exception ex) {
+			System.out.println(" $ Error storing an object: " + ex.getMessage());
+			result=false;
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		return result;
 	}
 
 	@Override
 	public boolean delete(Usuario object) {
-		super.deleteObject(object);
 		return true;
 	}
 
 	@Override
 	public List<Usuario> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
 		
 		List<Usuario> usuarios = new ArrayList<>();
 

@@ -9,10 +9,7 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.jdo.Extent;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-import javax.jdo.Transaction;
+import javax.jdo.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -24,45 +21,53 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UsuarioDAOTest {
+	PersistenceManager pm;
+	PersistenceManagerFactory pmf;
+	Transaction tx;
 	UsuarioDAO usuarioDAO;
 	private LocalDate fecha;
 	private Usuario usuario;
 	private ArrayList<Usuario> usuarios;
+	private ArrayList<Usuario> usuariosVacio;
 	
 	@Before
 	public void setUp() {
 		
-		usuarioDAO= org.mockito.Mockito.mock(UsuarioDAO.class);
+		usuarioDAO= UsuarioDAO.getInstance();
+		tx = org.mockito.Mockito.mock(Transaction.class);
+		pm = org.mockito.Mockito.mock(PersistenceManager.class);
+
+		usuarioDAO.setPM(pm);
+		usuarioDAO.setTransaction(tx);
+
+		doNothing().when(tx).begin();
+		doNothing().when(tx).commit();
+		doNothing().when(pm).close();
+
 		fecha = LocalDate.of(2000, Month.MAY, 15);
     	usuario = new Usuario("123456789A", "Aitor", fecha );
     	
 		usuarios = new ArrayList<>();
+		usuariosVacio = new ArrayList<>();
 		usuarios.add(usuario);
 		
 	}
 	
 	@Test
-	@Ignore
 	public void testsave() {
-		when(usuarioDAO.save(usuario)).thenReturn(true);
-
+		when(pm.makePersistent(usuario)).thenReturn(usuario);
+		when(tx.isActive()).thenReturn(true);
 		assertTrue(usuarioDAO.save(usuario));
 	}
 
 	@Test
-	@Ignore
 	public void testdelete() {
-		when(usuarioDAO.delete(usuario)).thenReturn(true);
-
 		assertTrue(usuarioDAO.delete(usuario));
 	}
 
 	@Test
-	@Ignore
 	public void testgetAll() {
-		when(usuarioDAO.getAll()).thenReturn(usuarios);
-		
-		assertEquals(usuarios, usuarioDAO.getAll());
+		assertEquals(usuariosVacio, usuarioDAO.getAll());
 	}
 
 	@Test

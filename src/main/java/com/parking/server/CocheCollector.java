@@ -5,17 +5,40 @@ import java.util.ArrayList;
 import com.parking.serialization.Coche;
 import com.parking.serialization.CocheDAO;
 
+import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
+
 public class CocheCollector {
     
     public ArrayList<Coche> addCoche(Coche coche) {
         synchronized(this) {
-        	CocheDAO.getInstance().save(coche);
-            return (ArrayList<Coche>) CocheDAO.getInstance().getAll();
+            // PM
+            CocheDAO dao = CocheDAO.getInstance();
+            PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+            PersistenceManager pm = pmf.getPersistenceManager();
+            dao.setPM(pm);
+            dao.setTransaction(pm.currentTransaction());
+            // Save
+            dao.save(coche);
+            // PM
+            pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+            pm = pmf.getPersistenceManager();
+            dao.setPM(pm);
+            dao.setTransaction(pm.currentTransaction());
+            return (ArrayList<Coche>) dao.getAll();
         }
     }
 
     public ArrayList<Coche> getCoches() {
-    	return (ArrayList<Coche>) CocheDAO.getInstance().getAll();
+        // PM
+        CocheDAO dao = CocheDAO.getInstance();
+        PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+        PersistenceManager pm = pmf.getPersistenceManager();
+        dao.setPM(pm);
+        dao.setTransaction(pm.currentTransaction());
+
+        return (ArrayList<Coche>) dao.getAll();
     }
     
     public ArrayList<String> getListaMatriculas(){
