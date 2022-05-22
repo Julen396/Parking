@@ -3,34 +3,26 @@ package com.parking.server;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
-import jakarta.ws.rs.core.Response;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.parking.serialization.Coche;
+import com.parking.serialization.Usuario;
+
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-
-import org.junit.experimental.categories.Category;
-
-import com.parking.server.ServerManagerMain;
-import com.parking.serialization.Coche;
-import com.parking.serialization.ListaUsuarios;
-import com.parking.serialization.Plaza;
-import com.parking.serialization.Usuario;
+import java.time.Month;
 
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.Required;
 import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.Rule;
 
-import categories.PerformanceTest;
 
 //@Category(PerformanceTest.class)
 @PerfTest(invocations = 5)
@@ -40,7 +32,13 @@ public class ParkingServerPerfTest {
 
     private static HttpServer server;
     private static WebTarget target;
+    
+    ParkingServer parkingServer;
 	
+	CocheCollector cocheCollector;
+	PlazaCollector plazaCollector;
+	UsuarioCollector usuarioCollector;
+		
     @BeforeClass
     public static void setUp() {
         // start the server
@@ -55,17 +53,29 @@ public class ParkingServerPerfTest {
         // c.configuration().enable(new org.glassfish.jersey.media.json.JsonJaxbFeature());
 
         target = c.target(ServerManagerMain.BASE_URI);
-        
     }
+    	
+	@Before
+	public void setUpPServer() {
+		cocheCollector= org.mockito.Mockito.mock(CocheCollector.class);
+		plazaCollector= org.mockito.Mockito.mock(PlazaCollector.class);
+		usuarioCollector= org.mockito.Mockito.mock(UsuarioCollector.class);
+		parkingServer=new ParkingServer(cocheCollector, plazaCollector, usuarioCollector);
+	}
      
     
 	@Test
     @PerfTest(invocations = 1000, threads = 20)
-    @Required(max = 80, average = 60)
+    @Required(max = 80, average = 8)
 	public void testanadirCoche() {
-		
-		assertEquals(1, 1);
-
+		Usuario u1 = new Usuario();
+		u1.setDni("1789562V");
+		u1.setFecha_nac(LocalDate.of(2004, Month.APRIL, 22));
+		u1.setNombre("Juan");
+		Coche c1 = new Coche();
+		c1.setMatricula("1111BBB");
+		c1.setPropietario(u1);
+		parkingServer.anadirCoche(c1);
 	}
 	
 	@Test
@@ -75,7 +85,6 @@ public class ParkingServerPerfTest {
 	
 	@Test
 	public void testAnadirPlaza() {
-		
 		assertEquals(1, 1);
 	}
 	
