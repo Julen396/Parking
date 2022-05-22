@@ -61,7 +61,7 @@ public class ParkingServerTest {
 	}
 	
 	@Test
-	public void testanadirCoche() {
+	public void testAnadirCoche() {
 		
 		Response response = parkingServer.anadirCoche(coche1);
 		
