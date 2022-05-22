@@ -32,7 +32,7 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#onPlazaButtonClick" text="Plaza" />
                   <Button mnemonicParsing="false" onAction="#onUsuarioButtonClick" text="Registrar Usuario" />
-                  <Button mnemonicParsing="false" onAction="#onUsuarioButtonClick" text="Registrar Coche" />
+                  <Button mnemonicParsing="false" onAction="#onRegistrarCocheButtonClick" text="Registrar Coche" />
                   <Button mnemonicParsing="false" onAction="#onMostrarUsuariosButtonClick" text="Mostrar Usuarios" />
                </children>
             </HBox>

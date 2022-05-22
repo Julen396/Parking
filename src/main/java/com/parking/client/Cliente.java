@@ -52,7 +52,7 @@ public class Cliente {
         }
 
     }
-    
+
     public List<Coche> getCoches() {
         WebTarget cochesWebTarget = webTarget.path("/myresource/coches");
         Invocation.Builder invocationBuilder = cochesWebTarget.request(MediaType.APPLICATION_JSON);
@@ -70,5 +70,4 @@ public class Cliente {
         }
 
     }
-}
 }
