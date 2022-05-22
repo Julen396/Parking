@@ -1,6 +1,5 @@
 package com.parking.server;
 
-import com.parking.serialization.CocheDAO;
 import com.parking.serialization.UsuarioDAO;
 import com.parking.serialization.Usuario;
 

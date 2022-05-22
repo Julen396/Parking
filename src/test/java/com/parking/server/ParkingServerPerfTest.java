@@ -37,13 +37,15 @@ import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Plaza;
 import com.parking.serialization.Usuario;
 
+import categories.PerformanceTest;
+
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.Required;
 import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.Rule;
 
 
-//@Category(PerformanceTest.class)
+@Category(PerformanceTest.class)
 @PerfTest(invocations = 5)
 @Required(max = 1200, average = 250)
 public class ParkingServerPerfTest {

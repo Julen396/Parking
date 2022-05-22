@@ -1,13 +1,10 @@
 package com.parking.server;
 
 import com.parking.serialization.Coche;
-import com.parking.serialization.CocheDAO;
 import com.parking.serialization.ListaCoche;
 import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Plaza;
-import com.parking.serialization.PlazaDAO;
-import com.parking.serialization.Usuario;
-import com.parking.serialization.UsuarioDAO;
+
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
