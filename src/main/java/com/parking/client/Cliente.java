@@ -1,6 +1,7 @@
 package com.parking.client;
 
 import com.parking.serialization.Coche;
+import com.parking.serialization.ListaCoche;
 import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Usuario;
 import jakarta.ws.rs.client.*;
@@ -48,6 +49,24 @@ public class Cliente {
             System.out.println("No se pudieron obtener los usuarios");
             ListaUsuarios usuarios = new ListaUsuarios();
             return usuarios.getListUsuarios();
+        }
+
+    }
+    
+    public List<Coche> getCoches() {
+        WebTarget cochesWebTarget = webTarget.path("/myresource/coches");
+        Invocation.Builder invocationBuilder = cochesWebTarget.request(MediaType.APPLICATION_JSON);
+
+        Response response = invocationBuilder.get();
+        if (response.getStatus() == Response.Status.OK.getStatusCode()) {
+            System.out.println("Se han obtenido los coches");
+            ListaCoche coches = response.readEntity(ListaCoche.class);
+            System.out.println(coches);
+            return coches.getListCoches();
+        } else {
+            System.out.println("No se pudieron obtener los coches");
+            ListaCoche coches = new ListaCoche();
+            return coches.getListCoches();
         }
 
     }
