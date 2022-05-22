@@ -1,5 +1,6 @@
 package com.parking.server;
 
+import com.parking.client.Cliente;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
@@ -12,6 +13,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -60,12 +62,14 @@ public class ParkingServerPerfTest {
      
     
 	@Test
-    @PerfTest(invocations = 1000, threads = 20)
-    @Required(max = 80, average = 60)
-	public void testanadirCoche() {
-		
-		assertEquals(1, 1);
+    @PerfTest(invocations = 100, threads = 20)
+    @Required(max = 20000, average = 10000)
+	public void testAnadirCoche() {
+		Cliente c = new Cliente("localhost", "8085");
 
+		Coche coche = new Coche();
+
+		assertTrue(c.addCoche(coche));
 	}
 	
 	@Test
