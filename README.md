@@ -9,7 +9,7 @@ Se puede contruir el proyecto y lanzar pruebas unitarias con el comando:
 ```
 mvn test
 ```
-Base de datos (Hay que ejecutar estas sentencias en MySQL
+Base de datos (Hay que ejecutar estas sentencias en MySQL)
 ```maven
 DROP SCHEMA IF EXISTS parkingDB;
 DROP USER IF EXISTS 'spq'@'localhost';
