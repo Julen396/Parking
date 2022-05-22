@@ -1,22 +1,21 @@
 package com.parking.server;
 
+import com.parking.client.Cliente;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.parking.serialization.Coche;
-import com.parking.serialization.Usuario;
-
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDate;
-import java.time.Month;
+import com.parking.serialization.Coche;
+import com.parking.serialization.Plaza;
 
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.Required;
@@ -32,13 +31,7 @@ public class ParkingServerPerfTest {
 
     private static HttpServer server;
     private static WebTarget target;
-    
-    ParkingServer parkingServer;
-	
-	CocheCollector cocheCollector;
-	PlazaCollector plazaCollector;
-	UsuarioCollector usuarioCollector;
-		
+
     @BeforeClass
     public static void setUp() {
         // start the server
@@ -54,33 +47,25 @@ public class ParkingServerPerfTest {
 
         target = c.target(ServerManagerMain.BASE_URI);
     }
-    	
-	@Before
-	public void setUpPServer() {
-		cocheCollector= org.mockito.Mockito.mock(CocheCollector.class);
-		plazaCollector= org.mockito.Mockito.mock(PlazaCollector.class);
-		usuarioCollector= org.mockito.Mockito.mock(UsuarioCollector.class);
-		parkingServer=new ParkingServer(cocheCollector, plazaCollector, usuarioCollector);
-	}
      
     
 	@Test
-    @PerfTest(invocations = 1000, threads = 20)
-    @Required(max = 80, average = 8)
-	public void testanadirCoche() {
-		Usuario u1 = new Usuario();
-		u1.setDni("1789562V");
-		u1.setFecha_nac(LocalDate.of(2004, Month.APRIL, 22));
-		u1.setNombre("Juan");
-		Coche c1 = new Coche();
-		c1.setMatricula("1111BBB");
-		c1.setPropietario(u1);
-		parkingServer.anadirCoche(c1);
+    @PerfTest(invocations = 1, threads = 20)
+    @Required(max = 20000, average = 10000)
+	public void testAnadirCoche() {
+		Cliente c = new Cliente("localhost", "8085");
+
+		Coche coche = new Coche();
+
+		assertTrue(c.addCoche(coche));
+
 	}
 	
 	@Test
 	public void testGetCoches() {
-		assertEquals(1, 1);
+		
+		
+
 	}
 	
 	@Test

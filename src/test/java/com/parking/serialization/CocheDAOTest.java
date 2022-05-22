@@ -21,7 +21,6 @@ import static org.mockito.Mockito.when;
 public class CocheDAOTest {
 
 	PersistenceManager pm;
-	PersistenceManagerFactory pmf;
 	Transaction tx;
 	CocheDAO cocheDAO;
 	

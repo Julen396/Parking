@@ -18,7 +18,6 @@ import static org.mockito.Mockito.*;
 public class PlazaDAOTest {
 
 	PersistenceManager pm;
-	PersistenceManagerFactory pmf;
 	Transaction tx;
 	PlazaDAO plazaDAO;
 	LocalDate fecha;

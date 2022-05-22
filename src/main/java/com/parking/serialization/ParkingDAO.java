@@ -3,15 +3,15 @@ package com.parking.serialization;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.jdo.Extent;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-import javax.jdo.Transaction;
+import javax.jdo.*;
 
-public class ParkingDAO extends DataAccessObjectBase implements IDataAccessObject<Parking> {
+public class ParkingDAO implements IDataAccessObject<Parking> {
 
-	private static ParkingDAO instance;	
-	
+	private static ParkingDAO instance;
+	private PersistenceManager pm = null;
+	private PersistenceManagerFactory pmf = null;
+	private Transaction tx = null;
+
 	private ParkingDAO() { }
 	
 	public static ParkingDAO getInstance() {
@@ -20,24 +20,45 @@ public class ParkingDAO extends DataAccessObjectBase implements IDataAccessObjec
 		}		
 		
 		return instance;
-	}	
+	}
+
+	public void setPM(PersistenceManager pm) {
+		this.pm = pm;
+	}
+
+	public void setTransaction(Transaction tx) {
+		this.tx = tx;
+	}
 	
 	@Override
 	public boolean save(Parking object) {
-		super.saveObject(object);
-		return true;
+		boolean result;
+
+		try {
+			tx.begin();
+			pm.makePersistent(object);
+			tx.commit();
+			result=true;
+		} catch (Exception ex) {
+			System.out.println(" $ Error storing an object: " + ex.getMessage());
+			result=false;
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		return result;
 	}
 
 	@Override
 	public boolean delete(Parking object) {
-		super.deleteObject(object);
 		return true;
 	}
 
 	@Override
 	public List<Parking> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
 		
 		List<Parking> parkings = new ArrayList<>();
 
