@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Date;
 /**
  * Test unitario de la clase coche.
  */

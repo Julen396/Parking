@@ -3,7 +3,6 @@ package com.parking.server;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;

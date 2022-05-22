@@ -1,7 +1,6 @@
 package com.parking.serialization;
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
