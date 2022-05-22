@@ -46,7 +46,7 @@ public class ParkingCollectorTest {
 	
     @Test
 	@Ignore
-	public void testaddParking(){
+	public void testAddParking(){
     	ArrayList<Parking> parkings = new ArrayList<Parking>();
     	parkings.add(parking1);
     	

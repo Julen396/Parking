@@ -27,9 +27,9 @@ public class ClienteTest {
         u = new Usuario("1234567A", "Koldo",d);
         c1 = new Coche("123123", u);
 	}
-	// TODO Arreglar todos los tests con mockito
+
 	@Test
-	public void testaddCoche() {
+	public void testAddCoche() {
 		when(cliente.addCoche(c1)).thenReturn(true);
 		
 		assertTrue(cliente.addCoche(c1));

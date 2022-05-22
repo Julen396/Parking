@@ -41,7 +41,7 @@ public class CocheCollectorTest {
 	}
 
 	@Test
-	public void testaddCoche() {
+	public void testAddCoche() {
 
 		when(cocheCollector.addCoche(coche1)).thenReturn(coches);
 
@@ -49,7 +49,7 @@ public class CocheCollectorTest {
 	}
 	
 	@Test 
-	public void testgetCoches() {
+	public void testGetCoches() {
 
 		when(cocheCollector.getCoches()).thenReturn(coches);
 		
@@ -58,7 +58,7 @@ public class CocheCollectorTest {
 	}
 	
 	@Test 
-	public void testgetListaMatriculas(){
+	public void testGetListaMatriculas(){
 		
 		ArrayList<String> listaMatriculas= new ArrayList<>();
 		listaMatriculas.add(coche1.getMatricula());
@@ -70,7 +70,7 @@ public class CocheCollectorTest {
 	
 	
 	@Test 
-	public void testgetCocheporMatricula () {
+	public void testGetCocheporMatricula () {
 		
 		when(cocheCollector.getCocheporMatricula(coche1.getMatricula())).thenReturn(coche1);
 		
