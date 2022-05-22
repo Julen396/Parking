@@ -46,6 +46,8 @@ public class ParkingServerPerfTest {
 
     private static HttpServer server;
     private static WebTarget target;
+    
+    private Cliente c;
 	
     @BeforeClass
     public static void setUp() {
@@ -64,12 +66,17 @@ public class ParkingServerPerfTest {
         
     }
      
+    @Before
+    public void setUp2() {
+    	
+    	c = new Cliente("localhost", "8085");
+        
+    }
     
 	@Test
     @PerfTest(invocations = 100, threads = 20)
     @Required(max = 20000, average = 10000)
 	public void testAddCoche() {
-		Cliente c = new Cliente("localhost", "8085");
 
 		Coche coche = new Coche();
 
@@ -80,8 +87,6 @@ public class ParkingServerPerfTest {
     @PerfTest(invocations = 100, threads = 20)
     @Required(max = 20000, average = 10000)	
     public void testGetUsuarios() {
-    	
-		Cliente c = new Cliente("localhost", "8085");
 		
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		
