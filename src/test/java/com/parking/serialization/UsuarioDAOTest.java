@@ -22,7 +22,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class UsuarioDAOTest {
 	PersistenceManager pm;
-	PersistenceManagerFactory pmf;
 	Transaction tx;
 	UsuarioDAO usuarioDAO;
 	private LocalDate fecha;

@@ -15,45 +15,54 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import javax.jdo.PersistenceManager;
+import javax.jdo.Transaction;
+
 @RunWith(MockitoJUnitRunner.class)
 public class ParkingDAOTest {
-    
+	PersistenceManager pm;
+	Transaction tx;
 	ParkingDAO parkingDAO;
 	private Parking parking;
 	private ArrayList<Parking> parkings;
+	private ArrayList<Parking> parkingsVacio;
 	
 	@Before
     public void setUp() {
         
-		parkingDAO= org.mockito.Mockito.mock(ParkingDAO.class);
+		parkingDAO = ParkingDAO.getInstance();
+		tx = org.mockito.Mockito.mock(Transaction.class);
+		pm = org.mockito.Mockito.mock(PersistenceManager.class);
+
+		parkingDAO.setPM(pm);
+		parkingDAO.setTransaction(tx);
+
+		doNothing().when(tx).begin();
+		doNothing().when(tx).commit();
+		doNothing().when(pm).close();
+
 		parking = new Parking(2);
 		
 		parkings = new ArrayList<>();
+		parkingsVacio = new ArrayList<>();
 		parkings.add(parking);
     }
 	
 	@Test
-	@Ignore
 	public void testsave() {
-		when(parkingDAO.save(parking)).thenReturn(true);
-
+		when(pm.makePersistent(parking)).thenReturn(parking);
+		when(tx.isActive()).thenReturn(true);
 		assertTrue(parkingDAO.save(parking));
 	}
 	
 	@Test
-	@Ignore
 	public void testdelete() {
-		when(parkingDAO.delete(parking)).thenReturn(true);
-
 		assertTrue(parkingDAO.delete(parking));
 	}
 	
 	@Test
-	@Ignore
 	public void testgetAll() {
-		when(parkingDAO.getAll()).thenReturn(parkings);
-		
-		assertEquals(parkings, parkingDAO.getAll());
+		assertEquals(parkingsVacio, parkingDAO.getAll());
 	}
 	
 	@Test
