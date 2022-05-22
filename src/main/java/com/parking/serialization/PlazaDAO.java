@@ -35,10 +35,24 @@ public class PlazaDAO implements IDataAccessObject<Plaza> {
 
 	@Override
 	public boolean save(Plaza object) {
-		tx.begin();
-		pm.makePersistent(object);
-		tx.commit();
-		return true;
+		boolean result;
+
+		try {
+			tx.begin();
+			pm.makePersistent(object);
+			tx.commit();
+			result=true;
+		} catch (Exception ex) {
+			System.out.println(" $ Error storing an object: " + ex.getMessage());
+			result=false;
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		return result;
 	}
 
 	@Override
@@ -48,9 +62,6 @@ public class PlazaDAO implements IDataAccessObject<Plaza> {
 
 	@Override
 	public List<Plaza> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		
 		List<Plaza> plazas = new ArrayList<>();
 
 		try {
