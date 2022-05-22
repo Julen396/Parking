@@ -3,7 +3,9 @@ package com.parking.server;
 import com.parking.client.Cliente;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Invocation;
 import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -18,11 +20,13 @@ import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.experimental.categories.Category;
 
 import com.parking.server.ServerManagerMain;
 import com.parking.serialization.Coche;
+import com.parking.serialization.ListaCoche;
 import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Plaza;
 import com.parking.serialization.Usuario;
@@ -64,7 +68,7 @@ public class ParkingServerPerfTest {
 	@Test
     @PerfTest(invocations = 100, threads = 20)
     @Required(max = 20000, average = 10000)
-	public void testAnadirCoche() {
+	public void testAddCoche() {
 		Cliente c = new Cliente("localhost", "8085");
 
 		Coche coche = new Coche();
@@ -73,27 +77,22 @@ public class ParkingServerPerfTest {
 	}
 	
 	@Test
-	public void testGetCoches() {
-		assertEquals(1, 1);
-	}
-	
-	@Test
-	public void testAnadirPlaza() {
+    @PerfTest(invocations = 100, threads = 20)
+    @Required(max = 20000, average = 10000)	
+    public void testGetUsuarios() {
+    	
+		Cliente c = new Cliente("localhost", "8085");
 		
-		assertEquals(1, 1);
-	}
-	
-	@Test
-	public void testGetPlazas() {
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		
-		assertEquals(1, 1);
-	}
+		assertEquals(usuarios,c.getUsuarios());
+
+    }
 	
 	@Test
-	public void testGetUsuarios() {
+    public void testGetCoches() {
 
-		assertEquals(1, 1);
 
-	}
+    }	
 	
 }
