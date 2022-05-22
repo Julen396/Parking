@@ -49,25 +49,25 @@ public class UsuarioDAOTest {
 	}
 	
 	@Test
-	public void testsave() {
+	public void testSave() {
 		when(pm.makePersistent(usuario)).thenReturn(usuario);
 		when(tx.isActive()).thenReturn(true);
 		assertTrue(usuarioDAO.save(usuario));
 	}
 
 	@Test
-	public void testdelete() {
+	public void testDelete() {
 		assertTrue(usuarioDAO.delete(usuario));
 	}
 
 	@Test
-	public void testgetAll() {
+	public void testGetAll() {
 		assertEquals(usuariosVacio, usuarioDAO.getAll());
 	}
 
 	@Test
 	@Ignore
-	public void testfind() {
+	public void testFind() {
 		when(usuarioDAO.find("parametro")).thenReturn(usuario);
 		
 		assertEquals(usuario, usuarioDAO.find("parametro"));

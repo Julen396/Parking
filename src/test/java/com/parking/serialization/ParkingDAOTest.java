@@ -46,25 +46,25 @@ public class ParkingDAOTest {
     }
 	
 	@Test
-	public void testsave() {
+	public void testSave() {
 		when(pm.makePersistent(parking)).thenReturn(parking);
 		when(tx.isActive()).thenReturn(true);
 		assertTrue(parkingDAO.save(parking));
 	}
 	
 	@Test
-	public void testdelete() {
+	public void testDelete() {
 		assertTrue(parkingDAO.delete(parking));
 	}
 	
 	@Test
-	public void testgetAll() {
+	public void testGetAll() {
 		assertEquals(parkingsVacio, parkingDAO.getAll());
 	}
 	
 	@Test
 	@Ignore
-	public void testfind() {	
+	public void testFind() {	
 		when(parkingDAO.find("parametro")).thenReturn(parking);
 		
 		assertEquals(parking, parkingDAO.find("parametro"));

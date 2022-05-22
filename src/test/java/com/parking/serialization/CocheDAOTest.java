@@ -55,25 +55,25 @@ public class CocheDAOTest {
 	}
 
 	@Test
-	public void testsave() {
+	public void testSave() {
 		when(pm.makePersistent(c1)).thenReturn(c1);
 		when(tx.isActive()).thenReturn(true);
 		assertTrue(cocheDAO.save(c1));
 	}
 	
 	@Test
-	public void testdelete() {
+	public void testDelete() {
 		assertTrue(cocheDAO.delete(c1));		
 	}
 	
 	@Test
-	public void testgetAll() {
+	public void testGetAll() {
 		assertEquals(cochesVacio, cocheDAO.getAll());
 	}
 	
 	@Test
 	@Ignore
-	public void testfind() {
+	public void testFind() {
 		when(cocheDAO.find("parametro")).thenReturn(c1);
 		
 		assertEquals(c1, cocheDAO.find("parametro"));

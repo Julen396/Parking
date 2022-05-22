@@ -65,13 +65,13 @@ public class PlazaDAOTest {
 	}
 
 	@Test
-	public void testgetAll() {
+	public void testGetAll() {
 		assertEquals(plazasVacio, plazaDAO.getAll());
 	}
 
 	@Test
 	@Ignore
-	public void testfind() {		
+	public void testFind() {		
 		when(plazaDAO.find("parametro")).thenReturn(plaza1);
 		
 		assertEquals(plaza1, plazaDAO.find("parametro"));
