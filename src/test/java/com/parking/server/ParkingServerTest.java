@@ -23,6 +23,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
 import com.parking.serialization.CocheDAO;
+import com.parking.serialization.ListaCoche;
 import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Plaza;
 import com.parking.serialization.PlazaDAO;
@@ -41,6 +42,7 @@ public class ParkingServerTest {
 	private Plaza plaza1;
 	private ArrayList<Coche> coches;
 	private ListaUsuarios listaUsuarios;
+	private ListaCoche listaCoche;
 	
 	ParkingServer parkingServer;
 	ParkingServer parkingServerVacio;
@@ -82,11 +84,17 @@ public class ParkingServerTest {
 		ArrayList<Coche> coches = new ArrayList<>();
 		coches.add(coche1);	
 		
+		listaCoche = new ListaCoche(coches);
+		
 		when(cocheCollector.getCoches()).thenReturn(coches);
-		
-		Response response = parkingServer.getCoches();
-		
-		assertEquals(coches, response.getEntity());
+
+		Response response = parkingServer.getCoches();		
+		ListaCoche lc = (ListaCoche) response.getEntity();
+		int i = 0;
+		for (Coche c : listaCoche.getListCoches()) {
+			assertEquals(c, lc.getListCoches().get(i));
+			i++;
+		}
 	}
 	
 	@Test

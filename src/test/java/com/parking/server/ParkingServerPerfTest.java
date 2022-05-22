@@ -11,8 +11,9 @@ import jakarta.ws.rs.core.Response;
 
 
 import org.glassfish.grizzly.http.server.HttpServer;
-
+import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -51,6 +52,9 @@ public class ParkingServerPerfTest {
     private static HttpServer server;
     private static WebTarget target;
 
+    
+    private Cliente c;
+
     @BeforeClass
     public static void setUp() {
         // start the server
@@ -67,12 +71,17 @@ public class ParkingServerPerfTest {
         target = c.target(ServerManagerMain.BASE_URI);
     }
      
+    @Before
+    public void setUp2() {
+    	
+    	c = new Cliente("localhost", "8085");
+        
+    }
     
 	@Test
-    @PerfTest(invocations = 1, threads = 20)
+    @PerfTest(invocations = 100, threads = 20)
     @Required(max = 20000, average = 10000)
 	public void testAddCoche() {
-		Cliente c = new Cliente("localhost", "8085");
 
 		Coche coche = new Coche();
 
@@ -84,30 +93,17 @@ public class ParkingServerPerfTest {
 	@PerfTest(invocations = 100, threads = 20)
     @Required(max = 20000, average = 10000)	
 	public void testGetCoches() {
-		Cliente c = new Cliente("localhost", "8085");
 		
 		ArrayList<Coche> coches = new ArrayList<Coche>();
 
 		assertEquals(coches, c.getCoches());
 
-
 	}
 	
 	@Test
-	public void testAnadirPlaza() {
-		assertEquals(1, 1);
-	}
-	
-	@Test
-	public void testGetPlazas() {
-
-	}    
-	
-	@Test
-	@PerfTest(invocations = 1, threads = 20)
+	@PerfTest(invocations = 100, threads = 20)
     @Required(max = 20000, average = 10000)	
     public void testGetUsuarios() {
-		Cliente c = new Cliente("localhost", "8085");
 		
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
