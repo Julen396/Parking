@@ -34,7 +34,7 @@ import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.Rule;
 
 
-@Category(PerformanceTest.class)
+//@Category(PerformanceTest.class)
 @PerfTest(invocations = 5)
 @Required(max = 1200, average = 250)
 public class ParkingServerPerfTest {
