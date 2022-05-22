@@ -3,7 +3,12 @@ package com.parking.server;
 import com.parking.client.Cliente;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Invocation;
 import jakarta.ws.rs.client.WebTarget;
+
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
 
 import org.glassfish.grizzly.http.server.HttpServer;
 
@@ -14,8 +19,22 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import static org.mockito.Mockito.when;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.experimental.categories.Category;
+
+
 import com.parking.serialization.Coche;
+
+import com.parking.serialization.ListaCoche;
+import com.parking.serialization.ListaUsuarios;
+
 import com.parking.serialization.Plaza;
+import com.parking.serialization.Usuario;
 
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.Required;
@@ -52,7 +71,7 @@ public class ParkingServerPerfTest {
 	@Test
     @PerfTest(invocations = 1, threads = 20)
     @Required(max = 20000, average = 10000)
-	public void testAnadirCoche() {
+	public void testAddCoche() {
 		Cliente c = new Cliente("localhost", "8085");
 
 		Coche coche = new Coche();
@@ -62,9 +81,15 @@ public class ParkingServerPerfTest {
 	}
 	
 	@Test
+	@PerfTest(invocations = 100, threads = 20)
+    @Required(max = 20000, average = 10000)	
 	public void testGetCoches() {
+		Cliente c = new Cliente("localhost", "8085");
 		
-		
+		ArrayList<Coche> coches = new ArrayList<Coche>();
+
+		assertEquals(coches, c.getCoches());
+
 
 	}
 	
@@ -75,15 +100,20 @@ public class ParkingServerPerfTest {
 	
 	@Test
 	public void testGetPlazas() {
-		
-		assertEquals(1, 1);
-	}
+
+	}    
 	
 	@Test
-	public void testGetUsuarios() {
+	@PerfTest(invocations = 1, threads = 20)
+    @Required(max = 20000, average = 10000)	
+    public void testGetUsuarios() {
+		Cliente c = new Cliente("localhost", "8085");
+		
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
-		assertEquals(1, 1);
+		assertEquals(usuarios,c.getUsuarios());
 
-	}
+    }
+	
 	
 }
