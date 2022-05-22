@@ -3,42 +3,65 @@ package com.parking.serialization;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.jdo.Extent;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-import javax.jdo.Transaction;
+import javax.jdo.*;
 
-public class PlazaDAO extends DataAccessObjectBase implements IDataAccessObject<Plaza> {
+public class PlazaDAO implements IDataAccessObject<Plaza> {
 
-	private static PlazaDAO instance;	
-	
-	private PlazaDAO() { }
-	
+	private PersistenceManager pm = null;
+	private PersistenceManagerFactory pmf = null;
+	private Transaction tx = null;
+	private static PlazaDAO instance;
+
+	private PlazaDAO() {
+		//pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		//pm = pmf.getPersistenceManager();
+	}
+
 	public static PlazaDAO getInstance() {
 		if (instance == null) {
 			instance = new PlazaDAO();
-		}		
-		
+		}
+
 		return instance;
-	}	
-	
+	}
+
+	public void setPM(PersistenceManager pm) {
+		this.pm = pm;
+	}
+
+	public void setTransaction(Transaction tx) {
+		this.tx = tx;
+	}
+
 	@Override
 	public boolean save(Plaza object) {
-		super.saveObject(object);
-		return true;
+		boolean result;
+
+		try {
+			tx.begin();
+			pm.makePersistent(object);
+			tx.commit();
+			result=true;
+		} catch (Exception ex) {
+			System.out.println(" $ Error storing an object: " + ex.getMessage());
+			result=false;
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		return result;
 	}
 
 	@Override
 	public boolean delete(Plaza object) {
-		super.deleteObject(object);
 		return true;
 	}
 
 	@Override
 	public List<Plaza> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		
 		List<Plaza> plazas = new ArrayList<>();
 
 		try {

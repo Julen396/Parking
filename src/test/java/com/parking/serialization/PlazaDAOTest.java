@@ -1,67 +1,73 @@
 package com.parking.serialization;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import javax.jdo.*;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PlazaDAOTest {
-	
+
+	PersistenceManager pm;
+	PersistenceManagerFactory pmf;
+	Transaction tx;
 	PlazaDAO plazaDAO;
-	private LocalDate fecha;
-	private Usuario usuario;
-	private Coche coche;
-	private Plaza plaza1;
-    private ArrayList<Plaza> plazas;
-    
+	LocalDate fecha;
+	Usuario usuario;
+	Coche coche;
+	Plaza plaza1;
+    ArrayList<Plaza> plazas;
+	ArrayList<Plaza> plazasVacio;
+
 	@Before
 	public void setUp() {
-		
-		plazaDAO= org.mockito.Mockito.mock(PlazaDAO.class);
+
+		plazaDAO = PlazaDAO.getInstance();
+		tx = org.mockito.Mockito.mock(Transaction.class);
+		pm = org.mockito.Mockito.mock(PersistenceManager.class);
+		//pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+
+		plazaDAO.setPM(pm);
+		plazaDAO.setTransaction(tx);
+
+		doNothing().when(tx).begin();
+		doNothing().when(tx).commit();
+		doNothing().when(pm).close();
 
 		fecha = LocalDate.of(2000, Month.MAY, 15);
     	usuario = new Usuario("123456789A", "Aitor", fecha );
     	coche = new Coche("1234ABC", usuario);
     	plaza1 = new Plaza(3, "C", 12, coche);
-    	
+
 		plazas = new ArrayList<>();
+		plazasVacio = new ArrayList<>();
 		plazas.add(plaza1);
 	}
-	
-	@Test
-	@Ignore
-	public void testsave() {
-		when(plazaDAO.save(plaza1)).thenReturn(true);
 
+	@Test
+	public void testSave() {
+		when(pm.makePersistent(plaza1)).thenReturn(plaza1);
+		when(tx.isActive()).thenReturn(true);
 		assertTrue(plazaDAO.save(plaza1));
 	}
 
 	@Test
-	@Ignore
-	public void testdelete() {
-		when(plazaDAO.delete(plaza1)).thenReturn(true);
-
+	public void testDelete() {
 		assertTrue(plazaDAO.delete(plaza1));
 	}
 
 	@Test
-	@Ignore
 	public void testgetAll() {
-		when(plazaDAO.getAll()).thenReturn(plazas);
-		
-		assertEquals(plazas, plazaDAO.getAll());
+		assertEquals(plazasVacio, plazaDAO.getAll());
 	}
 
 	@Test
