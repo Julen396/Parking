@@ -1,7 +1,6 @@
 package com.parking.serialization;
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -33,18 +32,18 @@ public class ParkingTest {
     }
     
     @Test
-	public void testgetNumPlazas() {
+	public void testGetNumPlazas() {
         int expected = 2;
         assertEquals(expected, parking.getNumPlazas());
 	}
     @Test
-	public void testsetNumPlazas() {
+	public void testSetNumPlazas() {
         int expected = 1;
         parking.setNumPlazas(1);
         assertEquals(expected, parking.getNumPlazas());
 	}
     @Test
-	public void testgetPlazas() {
+	public void testGetPlazas() {
     	ArrayList<Plaza> plazas = new ArrayList<>();
 		Plaza plaza2 = new Plaza(3, "C", 12, coche);
 		plazas.add(plaza2);
@@ -52,7 +51,7 @@ public class ParkingTest {
     	assertEquals(plazas, parking.getPlazas());
 	}
     @Test
-	public void testsetPlazas() {
+	public void testSetPlazas() {
 		ArrayList<Plaza> plazas = new ArrayList<>();
 		Plaza plaza2 = new Plaza(3, "C", 12, coche);
 		plazas.add(plaza2);
@@ -60,7 +59,7 @@ public class ParkingTest {
 		assertEquals(plazas, parking.getPlazas());
 	}
     @Test
-	public void testgetNumPlazasLibres() {
+	public void testGetNumPlazasLibres() {
     	int expected = 1;
 		ArrayList<Plaza> plazas = new ArrayList<>();
 		Plaza plaza3 = new Plaza(3, "C", 12, coche);

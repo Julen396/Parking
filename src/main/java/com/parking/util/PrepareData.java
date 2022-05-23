@@ -2,7 +2,6 @@ package com.parking.util;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Date;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;

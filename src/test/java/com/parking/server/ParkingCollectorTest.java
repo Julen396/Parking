@@ -3,7 +3,6 @@ package com.parking.server;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -47,7 +46,7 @@ public class ParkingCollectorTest {
 	
     @Test
 	@Ignore
-	public void testaddParking(){
+	public void testAddParking(){
     	ArrayList<Parking> parkings = new ArrayList<Parking>();
     	parkings.add(parking1);
     	

@@ -3,16 +3,13 @@ package com.parking.server;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
@@ -44,7 +41,7 @@ public class CocheCollectorTest {
 	}
 
 	@Test
-	public void testaddCoche() {
+	public void testAddCoche() {
 
 		when(cocheCollector.addCoche(coche1)).thenReturn(coches);
 
@@ -52,7 +49,7 @@ public class CocheCollectorTest {
 	}
 	
 	@Test 
-	public void testgetCoches() {
+	public void testGetCoches() {
 
 		when(cocheCollector.getCoches()).thenReturn(coches);
 		
@@ -61,7 +58,7 @@ public class CocheCollectorTest {
 	}
 	
 	@Test 
-	public void testgetListaMatriculas(){
+	public void testGetListaMatriculas(){
 		
 		ArrayList<String> listaMatriculas= new ArrayList<>();
 		listaMatriculas.add(coche1.getMatricula());
@@ -73,7 +70,7 @@ public class CocheCollectorTest {
 	
 	
 	@Test 
-	public void testgetCocheporMatricula () {
+	public void testGetCocheporMatricula () {
 		
 		when(cocheCollector.getCocheporMatricula(coche1.getMatricula())).thenReturn(coche1);
 		

@@ -3,26 +3,21 @@ package com.parking.serialization;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.jdo.*;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UsuarioDAOTest {
 	PersistenceManager pm;
-	PersistenceManagerFactory pmf;
 	Transaction tx;
 	UsuarioDAO usuarioDAO;
 	private LocalDate fecha;
@@ -54,25 +49,25 @@ public class UsuarioDAOTest {
 	}
 	
 	@Test
-	public void testsave() {
+	public void testSave() {
 		when(pm.makePersistent(usuario)).thenReturn(usuario);
 		when(tx.isActive()).thenReturn(true);
 		assertTrue(usuarioDAO.save(usuario));
 	}
 
 	@Test
-	public void testdelete() {
+	public void testDelete() {
 		assertTrue(usuarioDAO.delete(usuario));
 	}
 
 	@Test
-	public void testgetAll() {
+	public void testGetAll() {
 		assertEquals(usuariosVacio, usuarioDAO.getAll());
 	}
 
 	@Test
 	@Ignore
-	public void testfind() {
+	public void testFind() {
 		when(usuarioDAO.find("parametro")).thenReturn(usuario);
 		
 		assertEquals(usuario, usuarioDAO.find("parametro"));

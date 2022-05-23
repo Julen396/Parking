@@ -2,7 +2,6 @@ package com.parking.serialization;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.jdo.annotations.PersistenceCapable;
 

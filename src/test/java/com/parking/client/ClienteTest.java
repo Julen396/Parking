@@ -4,13 +4,10 @@ import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Date;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
@@ -30,18 +27,13 @@ public class ClienteTest {
         u = new Usuario("1234567A", "Koldo",d);
         c1 = new Coche("123123", u);
 	}
-	// TODO Arreglar todos los tests con mockito
+
 	@Test
-	public void testaddCoche() {
+	public void testAddCoche() {
 		when(cliente.addCoche(c1)).thenReturn(true);
 		
 		assertTrue(cliente.addCoche(c1));
 	}
 	
-	@Test(timeout = 1)
-	public void testdbperformance() {
-		cliente.addCoche(c1);
-	}
-
 	
 }

@@ -1,35 +1,26 @@
 package com.parking.server;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.when;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
-import java.util.List;
 
-import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.Required;
-import org.databene.contiperf.junit.ContiPerfRule;
 import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import com.parking.serialization.Coche;
 import com.parking.serialization.CocheDAO;
+import com.parking.serialization.ListaCoche;
 import com.parking.serialization.ListaUsuarios;
 import com.parking.serialization.Plaza;
 import com.parking.serialization.PlazaDAO;
 import com.parking.serialization.Usuario;
 import com.parking.serialization.UsuarioDAO;
 
-import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -41,6 +32,7 @@ public class ParkingServerTest {
 	private Plaza plaza1;
 	private ArrayList<Coche> coches;
 	private ListaUsuarios listaUsuarios;
+	private ListaCoche listaCoche;
 	
 	ParkingServer parkingServer;
 	ParkingServer parkingServerVacio;
@@ -69,7 +61,7 @@ public class ParkingServerTest {
 	}
 	
 	@Test
-	public void testanadirCoche() {
+	public void testAnadirCoche() {
 		
 		Response response = parkingServer.anadirCoche(coche1);
 		
@@ -82,11 +74,17 @@ public class ParkingServerTest {
 		ArrayList<Coche> coches = new ArrayList<>();
 		coches.add(coche1);	
 		
+		listaCoche = new ListaCoche(coches);
+		
 		when(cocheCollector.getCoches()).thenReturn(coches);
-		
-		Response response = parkingServer.getCoches();
-		
-		assertEquals(coches, response.getEntity());
+
+		Response response = parkingServer.getCoches();		
+		ListaCoche lc = (ListaCoche) response.getEntity();
+		int i = 0;
+		for (Coche c : listaCoche.getListCoches()) {
+			assertEquals(c, lc.getListCoches().get(i));
+			i++;
+		}
 	}
 	
 	@Test

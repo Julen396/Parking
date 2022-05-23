@@ -1,4 +1,4 @@
-![java ci workflow](https://github.com/julen396/parking/actions/workflows/javaci.yml/badge.svg) [![coverage](https://sonarcloud.io/api/project_badges/measure?project=Julen396_Parking&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Julen396_Parking)
+![java ci workflow](https://github.com/julen396/parking/actions/workflows/javaci.yml/badge.svg) [![coverage](https://sonarcloud.io/api/project_badges/measure?project=Julen396_Parking&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Julen396_Parking) [![codecov](https://codecov.io/gh/Julen396/Parking/branch/main/graph/badge.svg?token=VWV6C72V4T)](https://codecov.io/gh/Julen396/Parking)
 
 # Parking
 Aplicación para la gestión de un parking, formada por varios gestores y un administrador.
@@ -9,7 +9,7 @@ Se puede contruir el proyecto y lanzar pruebas unitarias con el comando:
 ```
 mvn test
 ```
-Base de datos
+Base de datos (Hay que ejecutar estas sentencias en MySQL)
 ```maven
 DROP SCHEMA IF EXISTS parkingDB;
 DROP USER IF EXISTS 'spq'@'localhost';
