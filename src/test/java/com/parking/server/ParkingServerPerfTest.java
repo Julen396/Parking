@@ -83,10 +83,8 @@ public class ParkingServerPerfTest {
 	@Test
 	@PerfTest(invocations = 100, threads = 20)
     @Required(max = 20000, average = 10000)	
-	public void testGetCoches() {
-		
+	public void testGetCoches() {		
 		ArrayList<Coche> coches = new ArrayList<Coche>();
-
 		assertEquals(coches, c.getCoches());
 
 	}
@@ -99,8 +97,5 @@ public class ParkingServerPerfTest {
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
 		assertEquals(usuarios,c.getUsuarios());
-
     }
-	
-	
 }
