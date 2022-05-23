@@ -1,6 +1,7 @@
 package com.parking.client;
 
 import com.parking.serialization.Usuario;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
