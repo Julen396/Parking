@@ -31,9 +31,6 @@ public class MainAppController {
     @FXML
     protected void onMostrarUsuariosButtonClick() {MainApp.initRootLayout(getClass().getResource("mostrarUsuariosWindow.fxml")); }
     @FXML
-    protected void onPlazaButtonClick() {
-    }
-    @FXML
     protected void onMostrarMatriculasButtonClick() {MainApp.initRootLayout(getClass().getResource("mostrarMatriculasWindow.fxml")); }
     @FXML
     protected void onCrearButtonClick() {
