@@ -34,7 +34,8 @@ public class MainAppController {
     protected void onPlazaButtonClick() {
         MainApp.initRootLayout(getClass().getResource("plazaWindow.fxml"));
     }
-
+    @FXML
+    protected void onMostrarMatriculasButtonClick() {MainApp.initRootLayout(getClass().getResource("mostrarMatriculasWindow.fxml")); }
     @FXML
     protected void onCrearButtonClick() {
         usuarioLabel.setText("Propietario AnÃ±adido!");

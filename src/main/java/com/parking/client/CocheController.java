@@ -25,8 +25,8 @@ public class CocheController {
 
     @FXML
     void onHomeButtonClick(ActionEvent event) {
-    	MainApp.initRootLayout(getClass().getResource("cocheWindow.fxml"));
-        System.out.println(nombreProp.getText() + " registrado correctamente!");
+    	MainApp.initRootLayout(getClass().getResource("mainWindow.fxml"));
+        System.out.println("El coche con matricula " + matricula.getText() + " ha sido registrado correctamente!");
     }
 
 }

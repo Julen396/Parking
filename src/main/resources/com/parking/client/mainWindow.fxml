@@ -28,13 +28,14 @@
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#onCrearButtonClick" text="Iniciar Sesion" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="45.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#onPlazaButtonClick" text="Plaza" />
                   <!-- METER FUNCIONALIDAD AL REGISTRAR COCHE Y USUARIO -->
                   <Button mnemonicParsing="false" onAction="#onUsuarioButtonClick" text="Registrar Usuario" />
                   <Button mnemonicParsing="false" onAction="#onRegistrarCocheButtonClick" text="Registrar Coche" />
                   <Button mnemonicParsing="false" onAction="#onMostrarUsuariosButtonClick" text="Mostrar Usuarios" />
+		  <Button mnemonicParsing="false" onAction="#onMostrarMatriculasButtonClick" text="Mostrar Matriculas" />
                </children>
             </HBox>
          </children>

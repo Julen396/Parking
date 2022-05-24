@@ -43,8 +43,8 @@ public class MostrarListaMatriculasController {
             coches.add(c);
         }
         coches.add(new Coche("1234ABC",(new Usuario("11111111D", "Unai", LocalDate.of(2001, Month.DECEMBER, 15)))));
-        coches.add(new Coche("1234ABC",(new Usuario("12345678A", "Pike", LocalDate.of(1999, Month.JULY, 21)))));
-        coches.add(new Coche("1234ABC",(new Usuario("12344122S", "Julen", LocalDate.of(2002, Month.MAY, 2)))));        
+        coches.add(new Coche("5678ABC",(new Usuario("12345678A", "Pike", LocalDate.of(1999, Month.JULY, 21)))));
+        coches.add(new Coche("1573ABC",(new Usuario("12344122S", "Julen", LocalDate.of(2002, Month.MAY, 2)))));        
         return coches;
     }
 }
