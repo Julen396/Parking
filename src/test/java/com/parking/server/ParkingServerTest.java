@@ -67,6 +67,13 @@ public class ParkingServerTest {
 		
 		assertEquals(coche1.getMatricula(), response.getEntity());
 	}
+
+	@Test
+	public void testAnadirUsuario() {
+		Response response = parkingServer.anadirUsuario(usuario);
+
+		assertEquals(usuario.getDni(), response.getEntity());
+	}
 	
 	@Test
 	public void testGetCoches() {
