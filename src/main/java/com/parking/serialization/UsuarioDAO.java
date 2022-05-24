@@ -40,7 +40,7 @@ public class UsuarioDAO implements IDataAccessObject<Usuario> {
 			tx.commit();
 			result=true;
 		} catch (Exception ex) {
-			System.out.println(" $ Error storing an object: " + ex.getMessage());
+			System.out.println(" $ Error storing a user: " + ex.getMessage());
 			result=false;
 		} finally {
 			if (tx != null && tx.isActive()) {
@@ -102,7 +102,7 @@ public class UsuarioDAO implements IDataAccessObject<Usuario> {
 			
 			tx.commit();
 		} catch (Exception ex) {
-			System.out.println("  $ Error querying a User: " + ex.getMessage());
+			System.out.println("  $ Error querying a user: " + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();

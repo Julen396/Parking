@@ -40,7 +40,7 @@ public class ParkingDAO implements IDataAccessObject<Parking> {
 			tx.commit();
 			result=true;
 		} catch (Exception ex) {
-			System.out.println(" $ Error storing an object: " + ex.getMessage());
+			System.out.println(" $ Error storing a parking: " + ex.getMessage());
 			result=false;
 		} finally {
 			if (tx != null && tx.isActive()) {
@@ -73,7 +73,7 @@ public class ParkingDAO implements IDataAccessObject<Parking> {
 						
 			tx.commit();
 		} catch (Exception ex) {
-			System.out.println("  $ Error querying all challenges: " + ex.getMessage());
+			System.out.println("  $ Error querying all parkings: " + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -101,7 +101,7 @@ public class ParkingDAO implements IDataAccessObject<Parking> {
 			
 			tx.commit();
 		} catch (Exception ex) {
-			System.out.println("  $ Error querying a Challenge: " + ex.getMessage());
+			System.out.println("  $ Error querying a parking: " + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();

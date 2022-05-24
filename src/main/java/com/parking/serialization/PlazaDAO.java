@@ -43,7 +43,7 @@ public class PlazaDAO implements IDataAccessObject<Plaza> {
 			tx.commit();
 			result=true;
 		} catch (Exception ex) {
-			System.out.println(" $ Error storing an object: " + ex.getMessage());
+			System.out.println(" $ Error storing a place: " + ex.getMessage());
 			result=false;
 		} finally {
 			if (tx != null && tx.isActive()) {
@@ -75,7 +75,7 @@ public class PlazaDAO implements IDataAccessObject<Plaza> {
 						
 			tx.commit();
 		} catch (Exception ex) {
-			System.out.println("  $ Error querying all challenges: " + ex.getMessage());
+			System.out.println("  $ Error querying all places: " + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -103,7 +103,7 @@ public class PlazaDAO implements IDataAccessObject<Plaza> {
 			
 			tx.commit();
 		} catch (Exception ex) {
-			System.out.println("  $ Error querying a Challenge: " + ex.getMessage());
+			System.out.println("  $ Error querying a places: " + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
