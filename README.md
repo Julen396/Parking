@@ -18,16 +18,17 @@ CREATE SCHEMA parkingDB;
 CREATE USER 'spq'@'localhost' IDENTIFIED BY 'spq';
 GRANT ALL ON parkingDB.* TO 'spq'@'localhost';
 ```
-Las clases de datos deben ser procesadas antes de generar las tablas con el comando:
-```
-mvn datanucleus:enhance
-```
+
 Para la creacion de las tablas se debe ejecutar el comando de maven
 Una vez hecho esto, hacer la creación/eliminación del esquema de Base de Datos:
 
 ```maven
 mvn clean compile
 mvn datanucleus:schema-delete/mvn datanucleus:schema-create
+```
+Las clases de datos deben ser procesadas antes de generar las tablas con el comando:
+```
+mvn datanucleus:enhance
 ```
 Después, ejecuta el servidor:
 
