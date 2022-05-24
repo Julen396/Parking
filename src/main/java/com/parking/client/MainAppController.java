@@ -32,14 +32,13 @@ public class MainAppController {
     protected void onMostrarUsuariosButtonClick() {MainApp.initRootLayout(getClass().getResource("mostrarUsuariosWindow.fxml")); }
     @FXML
     protected void onPlazaButtonClick() {
-        MainApp.initRootLayout(getClass().getResource("plazaWindow.fxml"));
     }
     @FXML
     protected void onMostrarMatriculasButtonClick() {MainApp.initRootLayout(getClass().getResource("mostrarMatriculasWindow.fxml")); }
     @FXML
     protected void onCrearButtonClick() {
-        usuarioLabel.setText("Propietario AnÃ±adido!");
-        matriculaLabel.setText("MatrÃ­cula aÃ±adida!");
+        usuarioLabel.setText("Propietario Anyadido!");
+        matriculaLabel.setText("Matricula anyadida!");
 
         //Guardar propietario
         Usuario user = new Usuario("1234567A", propietarioTF.getText(), LocalDate.of(2001, Month.DECEMBER, 12));
