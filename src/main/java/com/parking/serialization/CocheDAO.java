@@ -42,7 +42,7 @@ public class CocheDAO implements IDataAccessObject<Coche> {
 			tx.commit();
 			result=true;
 		} catch (Exception ex) {
-			System.out.println(" $ Error storing an object: " + ex.getMessage());
+			System.out.println(" $ Error storing a vehicle: " + ex.getMessage());
 			result=false;
 		} finally {
 			if (tx != null && tx.isActive()) {
@@ -75,7 +75,7 @@ public class CocheDAO implements IDataAccessObject<Coche> {
             tx.commit();
             System.out.println("Lista de coches: " + coches);
         } catch (Exception ex) {
-            System.out.println("  $ Error querying all challenges: " + ex.getMessage());
+            System.out.println("  $ Error querying all vehicles: " + ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -103,7 +103,7 @@ public class CocheDAO implements IDataAccessObject<Coche> {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("  $ Error querying a Challenge: " + ex.getMessage());
+            System.out.println("  $ Error querying a vehicle: " + ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
