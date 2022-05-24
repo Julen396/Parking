@@ -71,11 +71,10 @@ public class ParkingServerPerfTest {
     
 	@Test
     @PerfTest(invocations = 100, threads = 20)
-    @Required(max = 20000, average = 10000)
+    @Required(max = 30000, average = 10000)
 	public void testAddCoche() {
 
 		Coche coche = new Coche();
-
 		assertTrue(c.addCoche(coche));
 
 	}
@@ -89,9 +88,17 @@ public class ParkingServerPerfTest {
 
 	}
 	
+    @Test
+    @PerfTest(invocations = 100, threads = 20)
+    @Required(max = 30000, average = 10000)
+    public void testAddUsuario(){
+        Usuario usuario = new Usuario();
+        assertTrue(c.addUsuario(usuario));
+    }
+
 	@Test
 	@PerfTest(invocations = 100, threads = 20)
-    @Required(max = 20000, average = 10000)	
+    @Required(max = 30000, average = 10000)	
     public void testGetUsuarios() {
 		
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
