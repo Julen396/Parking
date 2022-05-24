@@ -35,5 +35,11 @@ public class ClienteTest {
 		assertTrue(cliente.addCoche(c1));
 	}
 	
+	@Test
+	public void testAddUsuario() {
+		when(cliente.addUsuario(u)).thenReturn(true);
+		
+		assertTrue(cliente.addUsuario(u));
+	}
 	
 }
