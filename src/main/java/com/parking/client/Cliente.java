@@ -35,6 +35,22 @@ public class Cliente {
         return true;
     }
 
+    public boolean addUsuario(Usuario usuario) {
+
+        WebTarget cochesWebTarget = webTarget.path("/myresource/usuarios");
+        Invocation.Builder invocationBuilder = cochesWebTarget.request(MediaType.APPLICATION_JSON);
+
+        Response response = invocationBuilder.post(Entity.entity(usuario, MediaType.APPLICATION_JSON));
+
+        if (response.getStatus() != Response.Status.OK.getStatusCode()) {
+            System.out.println("No se pudieron obtener los usuario");
+            System.out.println("Path: " + webTarget.getUri() + " / Estado: " + response.getStatus());
+        } else {
+            System.out.println("Se han obtenido los usuario");
+        }
+        return true;
+    }
+
     public List<Usuario> getUsuarios() {
         WebTarget usuariosWebTarget = webTarget.path("/myresource/usuarios");
         Invocation.Builder invocationBuilder = usuariosWebTarget.request(MediaType.APPLICATION_JSON);

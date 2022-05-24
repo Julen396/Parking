@@ -1,9 +1,6 @@
 package com.parking.server;
 
-import com.parking.serialization.Coche;
-import com.parking.serialization.ListaCoche;
-import com.parking.serialization.ListaUsuarios;
-import com.parking.serialization.Plaza;
+import com.parking.serialization.*;
 
 
 import jakarta.ws.rs.*;
@@ -46,6 +43,17 @@ public class ParkingServer{
 		System.out.println("Nuevo coche" + coche);
 		cocheCollector.addCoche(coche);
 		return Response.ok(coche.getMatricula()).build();
+	}
+
+	@POST
+	@Path("/usuarios")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response anadirUsuario(Usuario u) {
+		System.out.println("Usuario recibido");
+		System.out.println("Nuevo usuario" + u);
+		usuarioCollector.addUsuario(u);
+		return Response.ok(u.getDni()).build();
 	}
 
 	@GET

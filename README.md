@@ -27,7 +27,7 @@ Una vez hecho esto, hacer la creación/eliminación del esquema de Base de Datos
 
 ```maven
 mvn clean compile
-mvn datanucleus:schema-create/mvn datanucleus:schema-delete
+mvn datanucleus:schema-delete/mvn datanucleus:schema-create
 ```
 Después, ejecuta el servidor:
 
